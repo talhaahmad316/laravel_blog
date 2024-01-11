@@ -50,7 +50,8 @@
         @endforeach
       </tbody>
     </table>
-    {{ $users->links() }}
+    {{-- {{ $users->links() }} --}}
+    {{ $users->links('pagination::simple-bootstrap-4') }}
   </div>
   <!-- /.card-body -->
 </div>
