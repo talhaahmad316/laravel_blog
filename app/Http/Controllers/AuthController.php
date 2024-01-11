@@ -45,9 +45,10 @@ class AuthController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $users=User::paginate(10);
+        return view('auth.registered_user',compact('users'));
     }
 
     /**

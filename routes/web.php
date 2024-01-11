@@ -28,3 +28,9 @@ Route::get('/register', function () {
 
 Route::post('/user/register',[AuthController::class,'store'])
         ->name('user.register');
+
+// Route::get('registered', function () {
+//       return view('auth.registered_user');
+// });
+Route::get('registered',[AuthController::class,'show'])
+       ->name('registered.users');
