@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\UserMail;
 
 class AuthController extends Controller
 {
@@ -30,15 +32,16 @@ class AuthController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'email'=>'required',
+            'email'=>'required|email|unique:users',
             'password'=>'required',
-
         ]);
         $user=new User;
         $user->name=$request->name;
         $user->email=$request->email;
         $user->password=$request->password;
         $user->save();
+        $detail=$request->all();
+        Mail::to('talhaahmad3162@gmail.com')->send(new UserMail($detail));
         return redirect()->route('user.login');
     }
 
