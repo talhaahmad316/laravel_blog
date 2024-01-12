@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\UserMail;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -14,7 +15,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view('auth.login');
+        return view('welcome');
     }
 
     /**
@@ -26,34 +27,53 @@ class AuthController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Ragister all users in date base and validation
      */
     public function store(Request $request)
     {
+        // Validation Start
         $request->validate([
             'name'=>'required',
             'email'=>'required|email|unique:users',
             'password'=>'required',
         ]);
+        // Data Enter into Database
         $user=new User;
         $user->name=$request->name;
         $user->email=$request->email;
         $user->password=$request->password;
         $user->save();
+        // Mail is used for send email 
         $detail=$request->all();
         Mail::to('talhaahmad3162@gmail.com')->send(new UserMail($detail));
-        return redirect()->route('user.login');
+        return redirect('/login');
     }
 
     /**
-     * Display the specified resource.
+     * Display all users in table
      */
     public function show()
     {
         $users=User::paginate(10);
         return view('auth.registered_user',compact('users'));
     }
+    //   User login 
+    public function login(Request $request)
+    {
 
+        $request->validate([
+            'email'=>'required',
+            'password'=>'required',
+        ]);
+    
+
+    if(Auth::attempt($request->only('email','password'))){
+        return redirect('/');
+    }
+    return redirect('/login')->withError('login Details Are Wrong');
+    }
+
+    
     /**
      * Show the form for editing the specified resource.
      */

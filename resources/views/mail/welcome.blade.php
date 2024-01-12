@@ -7,8 +7,8 @@
 
     <h2>Your Sign-In Details:</h2>
     <ul>
-        <li><strong>Name:</strong> {{ $name ?? 'N/A' }}</li>
-        <li><strong>Email:</strong> {{ $email ?? 'N/A' }}</li>
+        <li><strong>Name:</strong> {{ $name ?? '' }}</li>
+        <li><strong>Email:</strong> {{ $email ?? '' }}</li>
     </ul>
 
     <p>
@@ -20,6 +20,6 @@
     </p>
 
     <p>
-        Best regards,
-        Your Blog Team
+        Best regards<br>
+        Talha Ahmad
     </p>

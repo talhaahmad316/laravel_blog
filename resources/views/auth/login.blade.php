@@ -24,23 +24,39 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="../../index3.html" method="post">
+      <form action="{{ Route('user.login')}}" method="get">
+        @csrf
         <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control" placeholder="Email">
+          <input type="email" name="email" class="form-control" placeholder="Email" value="{{old('email')}}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
         </div>
+        
+
+          <!-- Display error for email field -->
+          @if($errors->has('email'))
+          <span class="text-danger">{{ $errors->first('email') }}</span>
+        @endif
+      
+
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="Password" value="{{old('password')}}">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
+
+        <!-- Display error for password field -->
+        @if($errors->has('password'))
+        <span class="text-danger">{{ $errors->first('password') }}</span>
+      @endif
+    
+
         <div class="row">
           <!-- /.col -->
           <div class="col-4">
@@ -50,11 +66,6 @@
         </div>
       </form>
 
-      <!-- /.social-auth-links -->
-
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
       <p class="mb-0">
         <a href="{{url('/register')}}" class="text-center">Register a new membership</a>
       </p>

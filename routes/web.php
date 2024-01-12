@@ -14,13 +14,8 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('/user/login',[AuthController::class,'index'])
-        ->name('user.login');
+Route::get('/',[AuthController::class,'index'])
+        ->name('welcome');
 
 Route::get('/register', function () {
      return view('auth.register');
@@ -29,8 +24,13 @@ Route::get('/register', function () {
 Route::post('/user/register',[AuthController::class,'store'])
         ->name('user.register');
 
-// Route::get('registered', function () {
-//       return view('auth.registered_user');
-// });
 Route::get('registered',[AuthController::class,'show'])
        ->name('registered.users');
+
+
+Route::get('/login',function(){
+          return view('auth.login');
+});
+
+Route::get('/user/login',[AuthController::class,'login'])
+       ->name('user.login');

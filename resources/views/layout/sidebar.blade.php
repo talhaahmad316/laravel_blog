@@ -44,7 +44,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('/user/login')}}" class="nav-link active">
+                <a href="{{url('/login')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Login</p>
                 </a>
@@ -670,4 +670,8 @@
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
+  </aside>
+
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
   </aside>
