@@ -65,15 +65,12 @@ class AuthController extends Controller
             'email'=>'required',
             'password'=>'required',
         ]);
-    
-
+        // login start
     if(Auth::attempt($request->only('email','password'))){
         return redirect('/');
     }
     return redirect('/login')->withError('login Details Are Wrong');
     }
-
-    
     /**
      * Show the form for editing the specified resource.
      */

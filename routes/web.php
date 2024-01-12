@@ -16,21 +16,19 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/',[AuthController::class,'index'])
         ->name('welcome');
-
+//      registered Users Route
+Route::get('registered',[AuthController::class,'show'])
+       ->name('registered.users');
+//     SignUp Routes
 Route::get('/register', function () {
      return view('auth.register');
 });
-
 Route::post('/user/register',[AuthController::class,'store'])
         ->name('user.register');
 
-Route::get('registered',[AuthController::class,'show'])
-       ->name('registered.users');
-
-
+//    Login Routes
 Route::get('/login',function(){
           return view('auth.login');
 });
-
 Route::get('/user/login',[AuthController::class,'login'])
        ->name('user.login');
