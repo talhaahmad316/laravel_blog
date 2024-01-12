@@ -32,3 +32,7 @@ Route::get('/login',function(){
 });
 Route::get('/user/login',[AuthController::class,'login'])
        ->name('user.login');
+       
+       // logout
+Route::post('user/logout', [AuthController::class, 'logout'])
+    ->name('user.logout');

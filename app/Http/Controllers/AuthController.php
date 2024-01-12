@@ -69,7 +69,14 @@ class AuthController extends Controller
     if(Auth::attempt($request->only('email','password'))){
         return redirect('/');
     }
-    return redirect('/login')->withError('login Details Are Wrong');
+    return redirect('/login')->withErrors(['default' => 'Invalid login details']);
+    }
+
+    // Logout Function
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('login');
     }
     /**
      * Show the form for editing the specified resource.

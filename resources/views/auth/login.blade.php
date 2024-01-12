@@ -24,6 +24,12 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
+      @if($errors->has('default'))
+    <div class="alert alert-danger">
+        {{ $errors->first('default') }}
+    </div>
+@endif
+
       <form action="{{ Route('user.login')}}" method="get">
         @csrf
         <div class="input-group mb-3">

@@ -11,7 +11,11 @@
       <a href="#" class="nav-link">Contact</a>
     </li>
     <li>
-      <a href="{{url('/login')}}" class="btn btn-danger">Logout</a>
+      {{-- <a href="{{ Route('user.logout')}}" class="btn btn-danger">Logout</a> --}}
+      <form method="POST" action="{{ route('user.logout') }}">
+        @csrf
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
     </li>
   </ul>
 
