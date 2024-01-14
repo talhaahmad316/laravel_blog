@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,7 @@ use App\Http\Controllers\AuthController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//       welcome Page Route
 Route::get('/',[AuthController::class,'index'])
         ->name('welcome');
 //      registered Users Route
@@ -36,3 +37,9 @@ Route::get('/user/login',[AuthController::class,'login'])
        // logout Route
 Route::post('user/logout', [AuthController::class, 'logout'])
     ->name('user.logout');
+    /**Login Routes Finished*/
+
+//     Category Route
+
+Route::resource('category',CategoryController::class);
+     

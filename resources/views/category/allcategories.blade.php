@@ -31,27 +31,34 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Email</th>
-        <th>Password</th>
+        <th>Image</th>
         <th>Created AT</th>
         <th>Updated AT</th>
+        <th>Action</th>
       </tr>
       </thead>
       <tbody>
-        @foreach ($users as $item)
+        @foreach ($category as $item)
         <tr>
           <td>{{$item['id']}}</td>
           <td>{{$item['name']}}</td>
-          <td>{{$item['email']}}</td>
-          <td>{{$item['password']}}</td>
+          <td>
+            <img src="{{asset('public/categories/'.$item->image)}}" 
+            class="rounded-circle" width="50px" height="50px" alt="">
+          </td>
           <td>{{$item['created_at']}}</td>
           <td>{{$item['updated_at']}}</td>
+          <td>
+            <a href="" class="btn btn-primary">Edit</a>
+            <button class="btn btn-danger">Delete</button>
+          </td>
         </tr>
         @endforeach
+        
       </tbody>
     </table>
-    {{-- {{ $users->links() }} --}}
-    {{ $users->links('pagination::simple-bootstrap-4') }}
+ 
+    {{-- {{ $users->links('pagination::simple-bootstrap-4') }} --}}
   </div>
   <!-- /.card-body -->
 </div>
