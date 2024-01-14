@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         $category=Categories::get();
-        return view('category.allcategories',compact('category'));
+        return view('category.index',compact('category'));
     }
 
     /**
@@ -21,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.category');
+        return view('category.create');
     }
 
     /**
@@ -31,7 +31,7 @@ class CategoryController extends Controller
     {
         $request->validate([
 
-            'image'=>'required',
+            'image'=>'required|mimes:jpeg,jpg,png,gif|max:10000',
             'name'=>'required',
         ]);
         $imageName=time().'.'.$request->image->extension();
@@ -41,7 +41,7 @@ class CategoryController extends Controller
         $category->image=$imageName;
         $category->name=$request->name;
         $category->save();
-        return redirect('category');
+        return redirect()->route('category.index');
     }
     
 
@@ -58,7 +58,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category=Categories::where('id',$id)->first();
+        return view('category.edit',['category'=>$category]);
     }
 
     /**
@@ -66,14 +67,32 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
+       
+        $request->validate([
+
+            'image'=>'nullable|mimes:jpeg,jpg,png,gif|max:10000',
+            'name'=>'required',
+        ]);
+        $category=Categories::where('id',$id)->first();
+
+        if($request->hasFile('image')){
+            $imageName=time().'.'.$request->image->extension();
+            $request->image->move(public_path('categories'),$imageName);
+            $category->image=$imageName;
+        }
+        $category->name=$request->name;
+        $category->save();
+        return redirect()->route('category.index');
+ }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $category=Categories::where('id',$id)->first();
+        $category->delete();
+        return back();
+
     }
 }

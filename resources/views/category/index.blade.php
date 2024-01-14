@@ -43,14 +43,20 @@
           <td>{{$item['id']}}</td>
           <td>{{$item['name']}}</td>
           <td>
-            <img src="{{asset('public/categories/'.$item->image)}}" 
+            <img src="{{asset('categories/'.$item->image)}}" 
             class="rounded-circle" width="50px" height="50px" alt="">
           </td>
           <td>{{$item['created_at']}}</td>
           <td>{{$item['updated_at']}}</td>
           <td>
-            <a href="" class="btn btn-primary">Edit</a>
-            <button class="btn btn-danger">Delete</button>
+            <a href="{{ Route('category.edit',$item->id)}}" class="btn btn-primary">Edit</a>
+            
+            <form action="{{route('category.destroy',$item->id)}}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger">Delete</button>
+            </form>
+            
           </td>
         </tr>
         @endforeach
