@@ -10,8 +10,7 @@
         </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-             <li class="breadcrumb-item"><a href="./..indexphp">Home</a></li>
-           <li class="breadcrumb-item active">Categories</li>
+             <a href="{{ url('/category')}}" class="btn btn-primary">All categories</a>
          </ol>
       </div>
     </div>
@@ -30,29 +29,35 @@
    <div class="card-body">
     <div class="form-group">
       <label for="CategoryName">Category Name</label>
-        <input type="text" name="name" class="form-control" id="CategoryName" placeholder="Category Name" value="{{old('name')}}">
+        <input type="text" name="name" class="form-control" id="CategoryName" placeholder="Category Name"
+         value="{{old('name')}}">
         </div>
+
         @if($errors->has('name'))
         <span class="text-danger">{{$errors->first('name')}}</span>
         @endif
+
        <div class="form-group">
        <label for="exampleInputFile">File input</label>
         <div class="input-group">
          <div class="custom-file">
-        <input type="file" name="image" class="custom-file-input" id="exampleInputFile" value="{{old('image')}}">
+        <input type="file" name="image" class="custom-file-input" id="exampleInputFile" 
+        value="{{old('image')}}">
        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
        </div>
       </div>
       </div>
+
        @if($errors->has('image'))
-        <span class="text-danger">{{$errors->first('image')}}</span>
+      <span class="text-danger">{{$errors->first('image')}}</span>
         @endif
+
        </div>
         <div class="card-footer">
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-      </div>
+         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+     </div>
     </div>
   </div>
  </section>

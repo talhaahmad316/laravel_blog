@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category=Categories::get();
+        $category=Categories::paginate(10);
         return view('category.index',compact('category'));
     }
 
@@ -34,6 +34,7 @@ class CategoryController extends Controller
             'image'=>'required|mimes:jpeg,jpg,png,gif|max:10000',
             'name'=>'required',
         ]);
+
         $imageName=time().'.'.$request->image->extension();
         $request->image->move(public_path('categories'),$imageName);
 
@@ -75,7 +76,8 @@ class CategoryController extends Controller
         ]);
         $category=Categories::where('id',$id)->first();
 
-        if($request->hasFile('image')){
+        if($request->hasFile('image'))
+        {
             $imageName=time().'.'.$request->image->extension();
             $request->image->move(public_path('categories'),$imageName);
             $category->image=$imageName;
