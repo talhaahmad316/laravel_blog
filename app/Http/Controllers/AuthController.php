@@ -66,10 +66,11 @@ class AuthController extends Controller
             'password'=>'required',
         ]);
         // login start
-        if(Auth::attempt($request->only('email','password'))){
-        return redirect('/');
-    }
-        return redirect('/login')->withErrors(['default' => 'Invalid login details']);
+        if(Auth::attempt($request->only('email','password'))) 
+        {
+            return redirect('/');
+        }
+        return redirect('login')->withErrors(['error' => 'Invalid login details']);
     }
 
     // Logout Function
@@ -77,7 +78,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         session()->flush();
-        return redirect('/login');
+        return redirect('login');
     }
     /**
      * Show the form for editing the specified resource.

@@ -35,12 +35,12 @@ class CategoryController extends Controller
             'name'=>'required',
         ]);
 
-        $imageName=time().'.'.$request->image->extension();
+        $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('categories'),$imageName);
 
-        $category=new Categories;
-        $category->image=$imageName;
-        $category->name=$request->name;
+        $category = new Categories;
+        $category->image = $imageName;
+        $category->name = $request->name;
         $category->save();
         return redirect()->route('category.index')->withSuccess('Category Inserted Successfully');
     }
@@ -74,16 +74,17 @@ class CategoryController extends Controller
             'image'=>'nullable|mimes:jpeg,jpg,png,gif|max:10000',
             'name'=>'required',
         ]);
-        $category=Categories::where('id',$id)->first();
 
+        $category=Categories::where('id',$id)->first();
         if($request->hasFile('image'))
         {
             $imageName=time().'.'.$request->image->extension();
             $request->image->move(public_path('categories'),$imageName);
-            $category->image=$imageName;
+            $category->image = $imageName;
         }
-        $category->name=$request->name;
+        $category->name = $request->name;
         $category->save();
+        
         return redirect()->route('category.index')->withSuccess('Category Inserted Successfully');
  }
 

@@ -14,30 +14,16 @@ use App\Http\Controllers\CategoryController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-//       welcome Page Route
-Route::get('/',[AuthController::class,'index'])
-        ->name('welcome');
-        
-//     SignUp Routes
-Route::get('/register', function () {
-     return view('auth.register');
-});
-Route::post('/user/register',[AuthController::class,'store'])
-        ->name('user.register');
-
 //    Login Routes
-Route::get('/login',function(){
-          return view('auth.login');
-});
-Route::get('/user/login',[AuthController::class,'login'])
-       ->name('user.login');
-       
+Route::get('login',function(){ return view('auth.login');});
+Route::get('user/login',[AuthController::class,'login'])->name('user.login');
+//       welcome Page Route
+Route::get('/',[AuthController::class,'index'])->name('welcome'); 
+//     SignUp Routes
+Route::get('/register',function() { return view('auth.register');});
+Route::post('/user/register',[AuthController::class,'store'])->name('user.register');
        // logout Route
-Route::post('user/logout', [AuthController::class, 'logout'])
-      ->name('user.logout');
+Route::post('user/logout', [AuthController::class, 'logout'])->name('user.logout');
     /**Login Register Routes Finished*/
-
 //     Category Route
 Route::resource('category',CategoryController::class);
-     

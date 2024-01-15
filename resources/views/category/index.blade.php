@@ -1,4 +1,7 @@
 @extends('layout.master')
+@section('title')
+<title>AdminLTE 3 | Dashboard</title>
+@stop
 @section('content')
 <style>
     .w-5 {
@@ -41,7 +44,6 @@
     <table id="example1" class="table table-bordered table-striped table-hover">
       <thead class="thead-dark">
         <tr>
-          <th>ID</th>
           <th>Category Name</th>
           <th>Category Image</th>
           <th>Created AT</th>
@@ -52,7 +54,6 @@
       <tbody>
       @foreach ($category as $item)
         <tr>
-          <td>{{ $item['id'] }}</td>
           <td>{{ $item['name'] }}</td>
           <td>
             <img src="{{ asset('categories/' . $item->image) }}" class="rounded-circle"
