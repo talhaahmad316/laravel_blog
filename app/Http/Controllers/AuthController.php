@@ -55,8 +55,7 @@ class AuthController extends Controller
      */
     public function show()
     {
-        $users=User::paginate(10);
-        return view('auth.registered_user',compact('users'));
+        // 
     }
     //   User login 
     public function login(Request $request)

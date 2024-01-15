@@ -8,7 +8,7 @@ use App\Models\Categories;
 class CategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the category.
      */
     public function index()
     {
@@ -17,7 +17,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new category.
      */
     public function create()
     {
@@ -25,7 +25,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created cetagory in storage.
      */
     public function store(Request $request)
     {
@@ -42,12 +42,12 @@ class CategoryController extends Controller
         $category->image=$imageName;
         $category->name=$request->name;
         $category->save();
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->withSuccess('Category Inserted Successfully');
     }
     
 
     /**
-     * Display the specified resource.
+     * Display the specified category.
      */
     public function show(string $id)
     {
@@ -55,7 +55,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified category.
      */
     public function edit(string $id)
     {
@@ -64,7 +64,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified category in storage.
      */
     public function update(Request $request, string $id)
     {
@@ -84,17 +84,17 @@ class CategoryController extends Controller
         }
         $category->name=$request->name;
         $category->save();
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->withSuccess('Category Inserted Successfully');
  }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified category from storage.
      */
     public function destroy(string $id)
     {
         $category=Categories::where('id',$id)->first();
         $category->delete();
-        return back();
+        return back()->withDelete('Category Deleted Successfully');
 
     }
 }

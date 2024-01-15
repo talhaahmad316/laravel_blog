@@ -14,12 +14,10 @@ use App\Http\Controllers\CategoryController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 //       welcome Page Route
 Route::get('/',[AuthController::class,'index'])
         ->name('welcome');
-//      registered Users Route
-Route::get('registered',[AuthController::class,'show'])
-       ->name('registered.users');
 //     SignUp Routes
 Route::get('/register', function () {
      return view('auth.register');
@@ -37,9 +35,8 @@ Route::get('/user/login',[AuthController::class,'login'])
        // logout Route
 Route::post('user/logout', [AuthController::class, 'logout'])
     ->name('user.logout');
-    /**Login Routes Finished*/
+    /**Login Register Routes Finished*/
 
 //     Category Route
-
 Route::resource('category',CategoryController::class);
      

@@ -19,12 +19,20 @@
         </ol>
       </div>
     </div>
-  </div><!-- /.container-fluid -->
+  </div>
 </section>
-
 <div class="card">
-  <!-- /.card-header -->
   <div class="card-body">
+   @if($messege=Session::get('success'))
+    <div class="alert alert-success alert-block">
+     <strong>{{$messege}}</strong>
+    </div>
+   @endif
+   @if($messege=Session::get('delete'))
+       <div class="alert alert-danger alert-block">
+        <strong>{{$messege}}</strong>
+       </div>
+       @endif
     <table id="example1" class="table table-bordered table-striped table-hover">
       <thead>
       <tr>
@@ -67,8 +75,7 @@
         
        </tbody>
       </table>
- 
-    {{ $category->links('pagination::simple-bootstrap-4') }}
+      {{ $category->links('pagination::simple-bootstrap-4') }}
      </div>
     </div>
    </div>
@@ -76,5 +83,4 @@
  </div>
 </section>
 </div>
-
 @stop
