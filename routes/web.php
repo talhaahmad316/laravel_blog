@@ -18,6 +18,7 @@ use App\Http\Controllers\CategoryController;
 //       welcome Page Route
 Route::get('/',[AuthController::class,'index'])
         ->name('welcome');
+        
 //     SignUp Routes
 Route::get('/register', function () {
      return view('auth.register');
@@ -34,7 +35,7 @@ Route::get('/user/login',[AuthController::class,'login'])
        
        // logout Route
 Route::post('user/logout', [AuthController::class, 'logout'])
-    ->name('user.logout');
+      ->name('user.logout');
     /**Login Register Routes Finished*/
 
 //     Category Route
