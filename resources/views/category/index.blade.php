@@ -23,18 +23,20 @@
 </section>
 <div class="card">
   <div class="card-body">
+    {{-- Add and Update Category Alert --}}
    @if($messege=Session::get('success'))
     <div class="alert alert-success alert-block">
      <strong>{{$messege}}</strong>
     </div>
    @endif
+     {{-- Delete category --}}
    @if($messege=Session::get('delete'))
        <div class="alert alert-danger alert-block">
         <strong>{{$messege}}</strong>
        </div>
        @endif
     <table id="example1" class="table table-bordered table-striped table-hover">
-      <thead>
+      <thead class="thead-dark">
       <tr>
         <th>ID</th>
         <th>Name</th>
