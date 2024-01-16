@@ -8,17 +8,16 @@ use App\Models\SubCategory;
 class SubCategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the Sub Category.
      */
     public function index()
     {
-        // return view('subcategory.index');
         $subcategory=SubCategory::paginate(10);
         return view('subcategory.index',compact('subcategory'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Sub Category.
      */
     public function create()
     {
@@ -26,18 +25,20 @@ class SubCategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Sub Category in storage.
      */
     public function store(Request $request)
     {
+        // validation
         $request->validate([
           'name'=>'required',
           'category_id' => 'required',
           'image'=>'required|mimes:jpeg,jpg,png,gif|max:10000',
         ]);
+        // Name Image
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('subcategories'),$imageName);
-
+        // Data Insertion
         $subcategory = new SubCategory();
         $subcategory->name= $request->name;
         $subcategory->category_id=$request->category_id;
@@ -47,7 +48,7 @@ class SubCategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Sub Category.
      */
     public function show(string $id)
     {
@@ -55,7 +56,7 @@ class SubCategoryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified Sub Category.
      */
     public function edit(string $id)
     {
@@ -64,7 +65,7 @@ class SubCategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified Sub Category in storage.
      */
     public function update(Request $request, string $id)
     {
@@ -73,7 +74,6 @@ class SubCategoryController extends Controller
             'category_id' => 'required',
             'image'=>'nullable|mimes:jpeg,jpg,png,gif|max:10000',
         ]);
-
         $subcategory=subCategory::where('id',$id)->first();
         if($request->hasFile('image'))
         {
@@ -84,12 +84,11 @@ class SubCategoryController extends Controller
         $subcategory->name = $request->name;
         $subcategory->category_id=$request->category_id;
         $subcategory->save();
-        
         return redirect()->route('subcategory.index')->withSuccess('Sub Category Updated Successfull');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified Sub Category from storage.
      */
     public function destroy(string $id)
     {

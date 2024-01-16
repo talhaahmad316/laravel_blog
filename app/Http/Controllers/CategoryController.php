@@ -12,6 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        // Data Display in Table
         $category=Category::paginate(10);
         return view('category.index',compact('category'));
     }
@@ -29,15 +30,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        // Validation
         $request->validate([
-
             'image'=>'required|mimes:jpeg,jpg,png,gif|max:10000',
             'name'=>'required',
         ]);
-
+        // Name Image
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('categories'),$imageName);
-
+        // Data Insertion
         $category = new Category;
         $category->image = $imageName;
         $category->name = $request->name;
@@ -83,8 +84,7 @@ class CategoryController extends Controller
             $category->image = $imageName;
         }
         $category->name = $request->name;
-        $category->save();
-        
+        $category->save(); 
         return redirect()->route('category.index')->withSuccess('Category Updateted Successfully');
  }
 
@@ -96,6 +96,5 @@ class CategoryController extends Controller
         $category=Category::where('id',$id)->first();
         $category->delete();
         return back()->withDelete('Category Deleted Successfully');
-
     }
 }
