@@ -12,7 +12,7 @@
         </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <a href="{{ url('/category') }}" class="btn btn-primary">All categories</a>
+          <a href="{{ url('/category') }}" class="btn btn-primary">All Categories</a>
         </ol>
       </div>
     </div>

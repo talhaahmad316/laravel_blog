@@ -85,7 +85,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
         
-        return redirect()->route('category.index')->withSuccess('Category Inserted Successfully');
+        return redirect()->route('category.index')->withSuccess('Category Updateted Successfully');
  }
 
     /**

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,5 @@ Route::post('user/logout', [AuthController::class, 'logout'])->name('user.logout
     /**Login Register Routes Finished*/
 //     Category Route
 Route::resource('category',CategoryController::class);
+//     Sub Category Route
+Route::resource('subcategory',subCategoryController::class);
