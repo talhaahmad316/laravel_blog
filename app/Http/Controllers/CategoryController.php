@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categories;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category=Categories::paginate(10);
+        $category=Category::paginate(10);
         return view('category.index',compact('category'));
     }
 
@@ -38,7 +38,7 @@ class CategoryController extends Controller
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path('categories'),$imageName);
 
-        $category = new Categories;
+        $category = new Category;
         $category->image = $imageName;
         $category->name = $request->name;
         $category->save();
@@ -59,7 +59,7 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $category=Categories::where('id',$id)->first();
+        $category=Category::where('id',$id)->first();
         return view('category.edit',['category'=>$category]);
     }
 
@@ -75,7 +75,7 @@ class CategoryController extends Controller
             'name'=>'required',
         ]);
 
-        $category=Categories::where('id',$id)->first();
+        $category=Category::where('id',$id)->first();
         if($request->hasFile('image'))
         {
             $imageName=time().'.'.$request->image->extension();
@@ -93,7 +93,7 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $category=Categories::where('id',$id)->first();
+        $category=Category::where('id',$id)->first();
         $category->delete();
         return back()->withDelete('Category Deleted Successfully');
 

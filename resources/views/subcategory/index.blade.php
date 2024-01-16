@@ -21,7 +21,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <a href="{{ route('category.create') }}" class="btn btn-primary">Add Category</a>
+            <a href="{{ route('subcategory.create') }}" class="btn btn-primary">Add Sub Category</a>
           </ol>
         </div>
       </div>
