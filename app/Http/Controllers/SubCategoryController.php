@@ -82,7 +82,7 @@ class SubCategoryController extends Controller
         if($request->hasFile('image'))
         {
             $imageName=time().'.'.$request->image->extension();
-            $request->image->move(public_path('categories'),$imageName);
+            $request->image->move(public_path('subcategories'),$imageName);
             $subcategory->image = $imageName;
         }
         $subcategory->name = $request->name;
