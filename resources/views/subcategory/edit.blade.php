@@ -42,9 +42,9 @@
               <label for="CategoryName">Select Category</label>
               <select class="form-control" name="category_id" value="{{ old('category_id', $subcategory->category_id) }}">
                 <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                @foreach ($category as $item)
+                    <option>{{$item->name}}</option>
+                    @endforeach
                 </select>
             </div>
             @if($errors->has('category_id'))
