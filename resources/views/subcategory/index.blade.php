@@ -45,9 +45,9 @@
     <table id="example1" class="table table-bordered table-striped table-hover">
       <thead class="thead-dark">
         <tr>
+          <th>Sub Category Name</th>
           <th>Category Name</th>
-          <th>Category ID</th>
-          <th>Category Image</th>
+          <th>Sub Category Image</th>
           <th>Created AT</th>
           <th>Updated AT</th>
           <th style="padding-left: 45px;">Action</th>

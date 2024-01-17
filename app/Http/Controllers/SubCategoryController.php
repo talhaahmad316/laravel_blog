@@ -63,8 +63,6 @@ class SubCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        // $subcategory=SubCategory::where('id',$id)->first();
-        // return view('subcategory.edit',['subcategory'=>$subcategory]);
         $category = Category::all();
         $subcategory = SubCategory::where('id', $id)->first();
         return view('subcategory.edit', compact('subcategory', 'category'));
