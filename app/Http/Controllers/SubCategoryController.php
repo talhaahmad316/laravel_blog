@@ -22,9 +22,8 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-    //    return view('subcategory.create');
-    $category = Category::all();
-    return view('subcategory.create', compact('category'));
+        $category = Category::all();
+        return view('subcategory.create', compact('category'));
     }
 
     /**
@@ -67,7 +66,6 @@ class SubCategoryController extends Controller
         $subcategory = SubCategory::where('id', $id)->first();
         return view('subcategory.edit', compact('subcategory', 'category'));
     }
-
     /**
      * Update the specified Sub Category in storage.
      */
@@ -88,9 +86,8 @@ class SubCategoryController extends Controller
         $subcategory->name = $request->name;
         $subcategory->category_id=$request->category_id;
         $subcategory->save();
-        return redirect()->route('subcategory.index')->withSuccess('Sub Category Updated Successfull');
+        return redirect()->route('subcategory.index')->withUpdate('Sub Category Updated Successfull');
     }
-
     /**
      * Remove the specified Sub Category from storage.
      */

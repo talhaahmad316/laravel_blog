@@ -29,14 +29,21 @@
         </section>
         <div class="card">
             <div class="card-body">
-                {{-- Insert And Update Messege  --}}
+                {{-- Insert Alert  --}}
                 @if ($messege = Session::get('success'))
                     <div class="alert alert-success alert-block">
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         <strong>{{ $messege }}</strong>
                     </div>
                 @endif
-                {{-- Delete Messege --}}
+                {{-- Upadate Alert --}}
+                @if ($messege = Session::get('update'))
+                    <div class="alert alert-warning alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ $messege }}</strong>
+                    </div>
+                @endif
+                {{-- Delete Alert --}}
                 @if ($messege = Session::get('delete'))
                     <div class="alert alert-danger alert-block">
                         <button type="button" class="close" data-dismiss="alert">×</button>

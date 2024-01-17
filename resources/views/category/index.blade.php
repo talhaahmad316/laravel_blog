@@ -28,9 +28,16 @@
         </section>
         <div class="card">
             <div class="card-body">
-                {{-- Add and Update Category Alert --}}
+                {{-- Add  Category Alert --}}
                 @if ($messege = Session::get('success'))
                     <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <strong>{{ $messege }}</strong>
+                    </div>
+                @endif
+                {{-- Upadate Category Alert --}}
+                @if ($messege = Session::get('update'))
+                    <div class="alert alert-warning alert-block">
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         <strong>{{ $messege }}</strong>
                     </div>
