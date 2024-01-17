@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-    <title>AdminLTE 3 | Dashboard</title>
+<title>AdminLTE 3 | Dashboard</title>
 @stop
 @section('content')
     <div class="content-wrapper">
@@ -21,8 +21,8 @@
         </div>
         <section class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Edit Category : {{ $category->name }}</h3>

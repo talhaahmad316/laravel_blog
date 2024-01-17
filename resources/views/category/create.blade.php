@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-    <title>AdminLTE 3 | Dashboard</title>
+<title>AdminLTE 3 | Dashboard</title>
 @stop
 @section('content')
     <div class="content-wrapper">
@@ -20,8 +20,8 @@
         </div>
         <section class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Create Category</h3>
@@ -34,11 +34,9 @@
                                         <input type="text" name="name" class="form-control" id="CategoryName"
                                             placeholder="Category Name" value="{{ old('name') }}">
                                     </div>
-
                                     @if ($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
-
                                     <div class="form-group">
                                         <label for="exampleInputFile">File input</label>
                                         <div class="input-group">
@@ -49,11 +47,9 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     @if ($errors->has('image'))
                                         <span class="text-danger">{{ $errors->first('image') }}</span>
                                     @endif
-
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>

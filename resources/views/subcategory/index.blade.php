@@ -32,12 +32,14 @@
                 {{-- Insert And Update Messege  --}}
                 @if ($messege = Session::get('success'))
                     <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
                         <strong>{{ $messege }}</strong>
                     </div>
                 @endif
                 {{-- Delete Messege --}}
                 @if ($messege = Session::get('delete'))
                     <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
                         <strong>{{ $messege }}</strong>
                     </div>
                 @endif
@@ -80,7 +82,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $category->links('pagination::simple-bootstrap-4') }}
+                {{ $subcategory->links('pagination::simple-bootstrap-4') }}
             </div>
         </div>
     </div>

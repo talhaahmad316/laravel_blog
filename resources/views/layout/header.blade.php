@@ -11,21 +11,14 @@
       <a href="#" class="nav-link">Contact</a>
     </li>
     <li>
-      {{-- <a href="{{ Route('user.logout')}}" class="btn btn-danger">Logout</a> --}}
-      
     </li>
   </ul>
-
-  <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
-    <!-- Navbar Search -->
     <li class="nav-item">
       <a class="nav-link" data-widget="navbar-search" href="#" role="button">
         <i class="fas fa-search"></i>
       </a>
     </li>
-
-    <!-- Messages Dropdown Menu -->
     <li class="nav-item">
       <a class="nav-link" data-widget="fullscreen" href="#" role="button">
         <i class="fas fa-expand-arrows-alt"></i>

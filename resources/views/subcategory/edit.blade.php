@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-    <title>AdminLTE 3 | Dashboard</title>
+<title>AdminLTE 3 | Dashboard</title>
 @stop
 @section('content')
     <div class="content-wrapper">
@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Update SubCategory</h1>
+                        <h1 class="m-0">Update Sub Category</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -21,8 +21,8 @@
         </div>
         <section class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">Edit Sub Category : {{ $subcategory->name }}</h3>
@@ -76,5 +76,4 @@
                 </div>
         </section>
     </div>
-
 @stop

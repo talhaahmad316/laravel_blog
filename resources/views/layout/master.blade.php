@@ -44,10 +44,7 @@
   @yield('content')
   <!-- /.content-wrapper -->
   @include('layout.footer')
-
-  <!-- Control Sidebar -->
   
-  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 

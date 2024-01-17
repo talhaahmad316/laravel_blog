@@ -43,7 +43,6 @@ class AuthController extends Controller
         $user->email=$request->email;
         $user->password=$request->password;
         $user->save();
-
         // Mail is used for send email 
         $detail=$request->all();
         Mail::to('talhaahmad3162@gmail.com')->send(new UserMail($detail));

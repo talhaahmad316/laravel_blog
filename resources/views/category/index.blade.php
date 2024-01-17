@@ -6,8 +6,7 @@
     <style>
         .w-5 {
             display: none;
-        }
-
+        }        
         .table-hover tbody tr:hover {
             cursor: pointer;
         }
@@ -32,12 +31,14 @@
                 {{-- Add and Update Category Alert --}}
                 @if ($messege = Session::get('success'))
                     <div class="alert alert-success alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
                         <strong>{{ $messege }}</strong>
                     </div>
                 @endif
                 {{-- Delete category --}}
                 @if ($messege = Session::get('delete'))
                     <div class="alert alert-danger alert-block">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
                         <strong>{{ $messege }}</strong>
                     </div>
                 @endif
