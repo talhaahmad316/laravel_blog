@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         // Data Display in Table
-        $category=Category::paginate(10);
+        $category=Category::get();
         return view('category.index',compact('category'));
     }
 
@@ -43,7 +43,7 @@ class CategoryController extends Controller
         $category->image = $imageName;
         $category->name = $request->name;
         $category->save();
-        return redirect()->route('category.index')->withSuccess('Category Inserted Successfully');
+        return redirect()->route('category.index')->withCreate('Category Inserted Successfully');
     }
     
 

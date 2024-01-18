@@ -12,8 +12,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <a href="{{ route('subcategory.create') }}" class="btn btn-primary mr-2">Add Sub Category</a>
-                        <a href="{{ url('/subcategory') }}" class="btn btn-primary">All Sub Categories</a>
+                        <a href="{{ route('subcategory.create') }}" class="btn btn-success mr-2">Create Sub Category</a>
+                        <a href="{{ url('/subcategory') }}" class="btn btn-info">All Sub Categories</a>
                     </ol>
                 </div>
             </div>
@@ -22,24 +22,33 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-8">
-                <div class="card">
-                    <div class="card-body text-center">
+                <div class="card bg-light mb-3">
+                    <div class="card bg-light m-3 border-5 shadow text-center">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="card-title">Sub Category Details</h3>
+                        </div>
+                        <div class="card-body">
                         <div class="bg-secondary">
                             <h4 class="text-white">Sub Category Name:</h4>
                         </div>
-                        <h2 class="text-primary mb-4">{{$subcategory->name}}</h2>
+                        <h2 class="text-primary mb-2">{{$subcategory->name}}</h2>
                         <div class="bg-secondary">
-                            <h4 class="text-white">Category Name:</h4>
+                            <h4 class="text-white mb-2">Category Name:</h4>
                         </div>
-                        <h2 class="text-primary mb-4">{{$subcategory->name}}</h2>
+                        <h2 class="text-primary mb-2">{{$subcategory->category->name}}</h2>
                         <div class="bg-secondary">
                             <h4 class="text-white">Sub Category Image:</h4>
                         </div>
-                        <div class="text-center mb-3">
+                        <div class="text-center mb-4">
                             <img src="{{ asset('subcategories/' . $subcategory->image) }}" class="img-fluid rounded"
                                 style="max-height: 350px;" alt="SUbCategory Image">
                         </div>
+                        <div>
+                            <h4>Created AT : {{$subcategory->created_at}}</h4>
+                            <h4>Updated AT : {{$subcategory->updated_at}}</h4>
+                        </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

@@ -12,8 +12,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ route('category.create') }}" class="btn btn-primary mr-2">Add Category</a>
-                            <a href="{{ url('/category') }}" class="btn btn-primary">All Categories</a>
+                            <a href="{{ route('category.create') }}" class="btn btn-success mr-2">Create Category</a>
+                            <a href="{{ url('/category') }}" class="btn btn-info">All Categories</a>
                         </ol>
                     </div>
                 </div>
@@ -22,18 +22,26 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="card">
-                        <div class="card-body text-center">
+                        <div class="card bg-light mb-3">
+                            <div class="card bg-light m-3 border-5 shadow text-center">
+                                <div class="card-header bg-primary text-white">
+                                    <h3 class="card-title">Category Details</h3>
+                                </div>
+                                <div class="card-body text-center">
                             <div class="bg-secondary">
                                 <h4 class="text-white">Category Name:</h4>
                             </div>
-                            <h2 class="text-primary">{{$category->name}}</h2>
+                            <h2 class="text-primary mb-2">{{$category->name}}</h2>
                             <div class="bg-secondary">
                             <h4 class="text-white">Category Image:</h4>
                             </div>
                             <div class="text-center mb-3">
                                 <img src="{{ asset('categories/' . $category->image) }}" class="img-fluid rounded"
                                     style="max-height: 350px;" alt="Category Image">
+                            </div>
+                            <div>
+                                <h4>Created AT : {{$category->created_at}}</h4>
+                                <h4>Updated AT : {{$category->updated_at}}</h4>
                             </div>
                       </div>
                     </div>

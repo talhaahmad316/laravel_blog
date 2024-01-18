@@ -12,8 +12,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ route('subcategory.create') }}" class="btn btn-primary mr-2">Create Sub Cetagory</a>
-                            <a href="{{ url('/subcategory') }}" class="btn btn-primary">All Sub Categories</a>
+                            <a href="{{ route('subcategory.create') }}" class="btn btn-success mr-2">Create Sub Cetagory</a>
+                            <a href="{{ url('/subcategory') }}" class="btn btn-info">All Sub Categories</a>
                         </ol>
                     </div>
                 </div>
@@ -42,11 +42,10 @@
                                     @endif
                                     <div class="form-group">
                                         <label for="CategoryName">Select Category</label>
-                                        <select class="form-control" name="category_id"
-                                            value="{{ old('category_id', $subcategory->category_id) }}">
-                                            <option selected>Open this select menu</option>
-                                            @foreach ($category as $item)
-                                                <option>{{ $item->name }}</option>
+                                        <select class="form-control" name="category_id">
+                                            <option selected disabled>Open this select menu</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id ?? ''}}" {{ ( $category->id == $subcategory->category_id ? 'selected' : '') }}>{{ $category->name ?? ''}}</option>
                                             @endforeach
                                         </select>
                                     </div>

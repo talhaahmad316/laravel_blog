@@ -20,7 +20,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ route('category.create') }}" class="btn btn-primary">Add Category</a>
+                            <a href="{{ route('category.create') }}" class="btn btn-success">Create Category</a>
                         </ol>
                     </div>
                 </div>
@@ -28,27 +28,7 @@
         </section>
         <div class="card">
             <div class="card-body">
-                {{-- Add  Category Alert --}}
-                @if ($messege = Session::get('success'))
-                    <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $messege }}</strong>
-                    </div>
-                @endif
-                {{-- Upadate Category Alert --}}
-                @if ($messege = Session::get('update'))
-                    <div class="alert alert-warning alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $messege }}</strong>
-                    </div>
-                @endif
-                {{-- Delete category --}}
-                @if ($messege = Session::get('delete'))
-                    <div class="alert alert-danger alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $messege }}</strong>
-                    </div>
-                @endif
+                @include('partials.alerts')
                 <table id="example1" class="table table-bordered table-striped table-hover">
                     <thead class="thead-dark">
                         <tr>
@@ -69,7 +49,6 @@
                                 </td>
                                 <td>{{ $item['created_at'] }}</td>
                                 <td>{{ $item['updated_at'] }}</td>
-
                                 <td>
                                     <div class="btn-group" role="group">
                                         {{-- Edit Button --}}
@@ -86,7 +65,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $category->links('pagination::simple-bootstrap-4') }}
             </div>
         </div>
     </div>

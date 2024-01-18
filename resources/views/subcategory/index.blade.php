@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ route('subcategory.create') }}" class="btn btn-primary">Add Sub Category</a>
+                            <a href="{{ route('subcategory.create') }}" class="btn btn-success">Create Sub Category</a>
                         </ol>
                     </div>
                 </div>
@@ -29,27 +29,7 @@
         </section>
         <div class="card">
             <div class="card-body">
-                {{-- Insert Alert  --}}
-                @if ($messege = Session::get('success'))
-                    <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $messege }}</strong>
-                    </div>
-                @endif
-                {{-- Upadate Alert --}}
-                @if ($messege = Session::get('update'))
-                    <div class="alert alert-warning alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $messege }}</strong>
-                    </div>
-                @endif
-                {{-- Delete Alert --}}
-                @if ($messege = Session::get('delete'))
-                    <div class="alert alert-danger alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $messege }}</strong>
-                    </div>
-                @endif
+                @include('partials.alerts')
                 <table id="example1" class="table table-bordered table-striped table-hover">
                     <thead class="thead-dark">
                         <tr>
@@ -62,25 +42,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($subcategory as $item)
+                        @foreach ($subcategories as $subcategory)
                             <tr>
-                                {{-- <td>{{ $item['name'] }}</td> --}}
-                                <td><a href="{{ Route('subcategory.show', $item->id) }}" style="color: black; text-decoration: none;">{{ $item['name'] }}</a></td>
-
-                                <td>{{ $item['category_id'] }}</td>
+                                {{-- <td>{{ $subcategory['name'] }}</td> --}}
                                 <td>
-                                    <img src="{{ asset('subcategories/' . $item->image) }}" alt=""
+                                    <a href="{{ Route('subcategory.show', $subcategory->id) }}" style="color: black; text-decoration: none;">
+                                        {{ $subcategory['name'] ?? '' }}
+                                    </a>
+                                </td>
+
+                                <td>{{ $subcategory->category->name ?? '' }}</td>
+                                <td>
+                                    <img src="{{ asset('subcategories/' . $subcategory->image) }}" alt=""
                                         class="rounded-circle" width="50px" height="50px">
                                 </td>
-                                <td>{{ $item['created_at'] }}</td>
-                                <td>{{ $item['updated_at'] }}</td>
+                                <td>{{ $subcategory['created_at'] ?? '' }}</td>
+                                <td>{{ $subcategory['updated_at'] ?? '' }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         {{-- Edit Button --}}
-                                        <a href="{{ Route('subcategory.edit', $item->id) }}"
+                                        <a href="{{ Route('subcategory.edit', $subcategory->id) }}"
                                             class="btn btn-info mr-2">Edit</a>
                                         {{-- Delete Button --}}
-                                        <form action="{{ route('subcategory.destroy', $item->id) }}" method="POST">
+                                        <form action="{{ route('subcategory.destroy', $subcategory->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">DELETE</button>
@@ -91,7 +75,6 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $subcategory->links('pagination::simple-bootstrap-4') }}
             </div>
         </div>
     </div>

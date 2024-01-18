@@ -13,8 +13,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $subcategory=SubCategory::paginate(10);
-        return view('subcategory.index',compact('subcategory'));
+        $subcategories= SubCategory::with('category')->get();
+        return view('subcategory.index',compact('subcategories'));
     }
 
     /**
@@ -22,8 +22,8 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        $category = Category::all();
-        return view('subcategory.create', compact('category'));
+        $categories = Category::all();
+        return view('subcategory.create', compact('categories'));
     }
 
     /**
@@ -42,11 +42,11 @@ class SubCategoryController extends Controller
         $request->image->move(public_path('subcategories'),$imageName);
         // Data Insertion
         $subcategory = new SubCategory();
-        $subcategory->name= $request->name;
-        $subcategory->category_id=$request->category_id;
+        $subcategory->name = $request->name;
+        $subcategory->category_id = $request->category_id;
         $subcategory->image = $imageName;
         $subcategory->save();
-        return redirect()->route('subcategory.index')->withSuccess('Sub Category Inserted Successfully');
+        return redirect()->route('subcategory.index')->withCreate('Sub Category Inserted Successfully');
     }
 
     /**
@@ -63,9 +63,9 @@ class SubCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $category = Category::all();
+        $categories = Category::all();
         $subcategory = SubCategory::where('id', $id)->first();
-        return view('subcategory.edit', compact('subcategory', 'category'));
+        return view('subcategory.edit', compact('subcategory', 'categories'));
     }
     /**
      * Update the specified Sub Category in storage.

@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ url('/subcategory') }}" class="btn btn-primary">All Sub Categories</a>
+                            <a href="{{ url('/subcategory') }}" class="btn btn-info">All Sub Categories</a>
                         </ol>
                     </div>
                 </div>
@@ -40,9 +40,9 @@
                                     <div class="form-group">
                                         <label for="CategoryName">Select Category</label>
                                         <select class="form-control" name="category_id" value="{{ old('category_id') }}">
-                                            <option selected>Open this select menu</option>
-                                            @foreach ($category as $item)
-                                                <option>{{ $item->name }}</option>
+                                            <option selected disabled>Select Category</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id ?? ''}}">{{ $category->name ?? '' }}</option>
                                             @endforeach
                                         </select>
                                     </div>
