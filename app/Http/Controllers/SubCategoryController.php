@@ -54,7 +54,8 @@ class SubCategoryController extends Controller
      */
     public function show(string $id)
     {
-        
+        $subcategory=SubCategory::where('id',$id)->first();
+        return view('subcategory.show',['subcategory'=>$subcategory]);
     }
 
     /**
@@ -76,7 +77,7 @@ class SubCategoryController extends Controller
             'category_id' => 'required',
             'image'=>'nullable|mimes:jpeg,jpg,png,gif|max:10000',
         ]);
-        $subcategory=subCategory::where('id',$id)->first();
+        $subcategory=SubCategory::where('id',$id)->first();
         if($request->hasFile('image'))
         {
             $imageName=time().'.'.$request->image->extension();

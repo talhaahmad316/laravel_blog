@@ -64,7 +64,9 @@
                     <tbody>
                         @foreach ($subcategory as $item)
                             <tr>
-                                <td>{{ $item['name'] }}</td>
+                                {{-- <td>{{ $item['name'] }}</td> --}}
+                                <td><a href="{{ Route('subcategory.show', $item->id) }}" style="color: black; text-decoration: none;">{{ $item['name'] }}</a></td>
+
                                 <td>{{ $item['category_id'] }}</td>
                                 <td>
                                     <img src="{{ asset('subcategories/' . $item->image) }}" alt=""

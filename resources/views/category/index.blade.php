@@ -62,7 +62,7 @@
                     <tbody>
                         @foreach ($category as $item)
                             <tr>
-                                <td>{{ $item['name'] }}</td>
+                                <td><a href="{{ Route('category.show', $item->id) }}" style="color: black; text-decoration: none;">{{ $item['name'] }}</a></td>
                                 <td>
                                     <img src="{{ asset('categories/' . $item->image) }}" class="rounded-circle"
                                         width="50px" height="50px" alt="">
@@ -90,8 +90,5 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    </section>
-    </div>
+</div>
 @stop

@@ -52,7 +52,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category=Category::where('id',$id)->first();
+        return view('category.show',['category'=>$category]);
     }
 
     /**
