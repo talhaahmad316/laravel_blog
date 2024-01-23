@@ -45,7 +45,7 @@ class CategoryController extends Controller
         $category->save();
         return redirect()->route('category.index')->withCreate('Category Inserted Successfully');
     }
-    
+            
 
     /**
      * Display the specified category.
