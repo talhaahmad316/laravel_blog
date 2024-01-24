@@ -43,7 +43,7 @@ class CategoryController extends Controller
         $category->image = $imageName;
         $category->name = $request->name;
         $category->save();
-        return redirect()->route('category.index')->withCreate('Category Inserted Successfully');
+        return redirect()->route('category.index')->withCreate('Category Inserted Successfully! 🌟');
     }
             
 
@@ -86,7 +86,9 @@ class CategoryController extends Controller
         }
         $category->name = $request->name;
         $category->save(); 
-        return redirect()->route('category.index')->withUpdate('Category Updateted Successfully');
+         // this line postname is just to show the name afte edit on alert
+        $categoryname=Category::find($id);
+        return redirect()->route('category.index')->withUpdate('Category "' . $categoryname->name . '" Updated Successfully! 🎉');
  }
 
     /**
@@ -96,6 +98,6 @@ class CategoryController extends Controller
     {
         $category=Category::where('id',$id)->first();
         $category->delete();
-        return back()->withDelete('Category Deleted Successfully');
+        return back()->withDelete('Category Deleted Successfully! 🗑️');
     }
 }

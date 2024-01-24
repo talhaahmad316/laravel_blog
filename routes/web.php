@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,6 @@ Route::post('user/logout', [AuthController::class, 'logout'])->name('user.logout
 //     Category Route
 Route::resource('category',CategoryController::class);
 //     Sub Category Route
-Route::resource('subcategory',subCategoryController::class);
+Route::resource('subcategory',SubCategoryController::class);
+//     Blog Posting Route
+Route::resource('post',PostController::class);

@@ -24,6 +24,7 @@
     </div>
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        {{-- Categories --}}
         <li class="nav-item">
           <a href="#" class="nav-link active">
             <i class="nav-icon fas fa-copy"></i>
@@ -47,11 +48,12 @@
             </li>
           </ul>
         </li>
+        {{-- SubCategories --}}
         <li class="nav-item">
           <a href="#" class="nav-link active">
             <i class="nav-icon fas fa-copy"></i>
             <p>
-              Sub Categories
+              SubCategories
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -59,13 +61,37 @@
             <li class="nav-item">
               <a href="{{ route('subcategory.create')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Create Sub Categories</p>
+                <p>Create SubCategories</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ url('subcategory')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>All Sub Categories</p>
+                <p>All SubCategories</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        {{-- Blog Posting --}}
+        <li class="nav-item">
+          <a href="#" class="nav-link active">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Blogs
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('post.create')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Post Blogs</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url('/post')}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Blogs</p>
               </a>
             </li>
           </ul>

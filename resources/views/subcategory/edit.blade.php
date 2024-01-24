@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Update Sub Category</h1>
+                        <h1 class="m-0">Update SubCategory</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ route('subcategory.create') }}" class="btn btn-success mr-2">Create Sub Cetagory</a>
-                            <a href="{{ url('/subcategory') }}" class="btn btn-info">All Sub Categories</a>
+                            <a href="{{ route('subcategory.create') }}" class="btn btn-success mr-2">Create SubCetagory</a>
+                            <a href="{{ url('/subcategory') }}" class="btn btn-info">All SubCategories</a>
                         </ol>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="col-md-8">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Edit Sub Category : {{ $subcategory->name }}</h3>
+                                <h3 class="card-title">Edit SubCategory : {{ $subcategory->name }}</h3>
                             </div>
                             <form action="{{ url('subcategory/' . $subcategory->id) }}" method="POST"
                                 enctype="multipart/form-data">
@@ -33,7 +33,7 @@
                                 @method('PUT')
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="CategoryName">Sub Category Name</label>
+                                        <label for="CategoryName">SubCategory Name</label>
                                         <input type="text" name="name" class="form-control" id="CategoryName"
                                             placeholder="Category Name" value="{{ old('name', $subcategory->name) }}">
                                     </div>

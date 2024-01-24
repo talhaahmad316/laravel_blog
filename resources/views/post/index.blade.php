@@ -6,8 +6,7 @@
     <style>
         .w-5 {
             display: none;
-        }
-
+        }        
         .table-hover tbody tr:hover {
             cursor: pointer;
         }
@@ -17,11 +16,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All SubCategories</h1>
+                        <h1>All Posts</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ route('subcategory.create') }}" class="btn btn-success">Create SubCategory</a>
+                            <a href="{{ route('post.create') }}" class="btn btn-success">Post Blogs</a>
                         </ol>
                     </div>
                 </div>
@@ -33,53 +32,40 @@
                 <table id="example1" class="table table-bordered table-striped table-hover">
                     <thead class="thead-dark">
                         <tr>
-                            <th>SubCategory Name</th>
-                            <th>Category Name</th>
-                            <th>SubCategory Image</th>
+                            <th>Blog Title</th>
+                            <th>User Email</th>
+                            <th>Discription</th>
                             <th>Created AT</th>
                             <th>Updated AT</th>
                             <th style="padding-left: 45px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($subcategories as $subcategory)
+                        @foreach ($posts as $post)
                             <tr>
-                                {{-- <td>{{ $subcategory['name'] }}</td> --}}
-                                <td>
-                                    <a href="{{ Route('subcategory.show', $subcategory->id) }}" style="color: black; text-decoration: none;">
-                                        {{ $subcategory['name'] ?? '' }}
-                                    </a>
-                                </td>
-
-                                <td>{{ $subcategory->category->name ?? '' }}</td>
-                                <td>
-                                    <img src="{{ asset('subcategories/' . $subcategory->image) }}" alt=""
-                                        class="rounded-circle" width="50px" height="50px">
-                                </td>
-                                <td>{{ $subcategory['created_at'] ?? '' }}</td>
-                                <td>{{ $subcategory['updated_at'] ?? '' }}</td>
+                                <td><a href="{{ Route('post.show', $post->id) }}" style="color: black; text-decoration: none;">{{ $post['name'] }}</a></td>
+                                <td>{{$post['email']}}</td>
+                                <td>{{ Illuminate\Support\Str::limit($post['detail'], 25) }}</td>
+                                <td>{{$post['created_at']}}</td>
+                                <td>{{$post['updated_at']}}</td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         {{-- Edit Button --}}
-                                        <a href="{{ Route('subcategory.edit', $subcategory->id) }}"
-                                            class="btn btn-info mr-2">Edit</a>
+                                        <a href="{{ Route('post.edit', $post->id) }}" class="btn btn-info mr-2">Edit</a>
                                         {{-- Delete Button --}}
-                                        <form action="{{ route('subcategory.destroy', $subcategory->id) }}" method="POST">
+                                        <form action="{{Route('post.destroy',$post->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">DELETE</button>
+                                            <button class="btn btn-danger">Delete</button>
                                         </form>
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    </section>
-    </div>
+</div>
 @stop

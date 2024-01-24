@@ -30,15 +30,15 @@
                             <div class="card-body text-center">
                                 
                                 <div class="text-center mb-3">
-                                    <h4 class="text-white bg-secondary">Category Image:</h4>
+                                    <h4 class="text-white bg-secondary p-2 rounded mb-4">Category Image:</h4>
                                     <img src="{{ asset('categories/' . $category->image) }}" class="img-fluid rounded"
                                         style="max-height: 350px;" alt="Category Image">
                                 </div>
-                                <div class="bg-secondary">
+                                <div class="bg-secondary p-2 rounded">
                                     <h4 class="text-white">Category Name:</h4>
                                 </div>
                                 <h2 class="text-primary mb-2">{{ $category->name }}</h2>
-                                <div class="bg-info">
+                                <div class="bg-info p-2 rounded">
                                     <h4>Created AT : {{ $category->created_at }}</h4>
                                     <h4>Updated AT : {{ $category->updated_at }}</h4>
                                 </div>

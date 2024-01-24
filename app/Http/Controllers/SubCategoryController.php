@@ -46,7 +46,7 @@ class SubCategoryController extends Controller
         $subcategory->category_id = $request->category_id;
         $subcategory->image = $imageName;
         $subcategory->save();
-        return redirect()->route('subcategory.index')->withCreate('Sub Category Inserted Successfully');
+        return redirect()->route('subcategory.index')->withCreate('SubCategory Inserted Successfully! 🌟');
     }
 
     /**
@@ -87,7 +87,9 @@ class SubCategoryController extends Controller
         $subcategory->name = $request->name;
         $subcategory->category_id=$request->category_id;
         $subcategory->save();
-        return redirect()->route('subcategory.index')->withUpdate('Sub Category Updated Successfull');
+         // This line postname is just to show the name afte edit on alert
+         $subcategoryname=SubCategory::find($id);
+        return redirect()->route('subcategory.index')->withUpdate('Subcategory "' . $subcategoryname->name . '" Updated Successfully! 🎉');
     }
     /**
      * Remove the specified Sub Category from storage.
@@ -96,6 +98,6 @@ class SubCategoryController extends Controller
     {
         $subcategory=SubCategory::where('id',$id)->first();
         $subcategory->delete();
-        return back()->withDelete('Deleted Successfully');
+        return back()->withDelete('Subcategory Deleted Successfully! 🗑️');
     }
 }

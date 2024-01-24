@@ -8,11 +8,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Create Sub Category</h1>
+                        <h1 class="m-0">Create SubCategory</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{ url('/subcategory') }}" class="btn btn-info">All Sub Categories</a>
+                            <a href="{{ url('/subcategory') }}" class="btn btn-info">All SubCategories</a>
                         </ol>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                     <div class="col-md-8">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Create Category</h3>
+                                <h3 class="card-title">Create SubCategory</h3>
                             </div>
                             <form action="{{ Route('subcategory.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -32,7 +32,7 @@
                                     <div class="form-group">
                                         <label for="CategoryName">Sub Category Name</label>
                                         <input type="text" name="name" class="form-control" id="CategoryName"
-                                            placeholder="Category Name" value="{{ old('name') }}">
+                                            placeholder="SubCategory Name" value="{{ old('name') }}">
                                     </div>
                                     @if ($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
