@@ -67,7 +67,7 @@
                                         <form action="{{ route('subcategory.destroy', $subcategory->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">DELETE</button>
+                                            <button class="btn btn-danger">Delete</button>
                                         </form>
                                     </div>
                                 </td>
