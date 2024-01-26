@@ -47,7 +47,11 @@
                     <tbody>
                         @foreach ($posts as $post)
                             <tr>
-                                <td>{{$post['name']}}</td>
+                                {{-- <td>{{$post['name']}}</td> --}}
+                                <td>
+                                    <a href="{{ Route('post.show', $post->id) }}" style="color: black; text-decoration: none;">{{ $post['name'] }}
+                                    </a>
+                                </td>
                                 <td>{{$post['author']}}</td>
                                 <td>{{ $post->category->name ?? '' }}</td>
                                 <td>{{ $post->subcategory->name ?? '' }}</td>

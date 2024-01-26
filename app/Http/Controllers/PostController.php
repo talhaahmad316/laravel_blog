@@ -65,7 +65,8 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post=Post::where('id',$id)->first();
+        return view('post.show',['post'=>$post]);
     }
 
     /**
