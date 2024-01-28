@@ -35,28 +35,28 @@ class PostController extends Controller
     {
         $request->validate
         ([
-            'name'=>'required',
-            'author'=>'required',
-            'category_id'=>'required',
-            'subcategory_id'=>'required',
-            'short_detail'=>'required',
-            'long_detail'=>'required',
-            'tags'=>'required',
-            'image'=>'required',
+            'name' => 'required',
+            'author' => 'required',
+            'category_id' => 'required',
+            'subcategory_id' => 'required',
+            'short_detail' => 'required',
+            'long_detail' => 'required',
+            'tags' => 'required',
+            'image' => 'required',
         ]);
-        $imageName = time().'.'.$request->image->extension();
-        $request->image->move(public_path('posts'),$imageName);
-        $post=new Post();
-        $post->name=$request->name;
-        $post->author=$request->author;
-        $post->category_id=$request->category_id;
-        $post->subcategory_id=$request->subcategory_id;
-        $post->short_detail=$request->short_detail;
-        $post->long_detail=$request->long_detail;
-        $post->tags=$request->tags;
-        $post->image=$imageName;
-        $post->save();
-        return redirect()->route('post.index')->withCreate('Blog Posted Successfully! 🌟');
+        $imageName = time().'.'.$request -> image -> extension();
+        $request -> image -> move(public_path('posts'),$imageName);
+        $post = new Post();
+        $post -> name = $request -> name;
+        $post -> author = $request -> author;
+        $post -> category_id = $request -> category_id;
+        $post -> subcategory_id = $request -> subcategory_id;
+        $post -> short_detail = $request -> short_detail;
+        $post -> long_detail = $request -> long_detail;
+        $post -> tags = $request -> tags;
+        $post -> image = $imageName;
+        $post -> save();
+        return redirect() -> route('post.index') -> withCreate('Blog Posted Successfully! 🌟');
         
     }
 
@@ -76,7 +76,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $subcategories = SubCategory::all();
-        $post = Post::where('id', $id)->first();
+        $post = Post::where('id', $id) -> first();
         return view('post.edit', compact('post','subcategories', 'categories'));
     }
 

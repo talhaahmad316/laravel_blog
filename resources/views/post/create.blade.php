@@ -66,10 +66,7 @@
                                         <select class="form-control" name="subcategory_id" value="{{old('subcategory_id')}}">
                                             <option selected disabled>Select Subcategory</option>
                                             @foreach ($subcategories as $subcategory)
-                                            {{-- <option value="{{ $subcategory->id ?? ''}}">{{ $subcategory->name ?? '' }}</option> --}}
-                                            @if (old('category_id') == $subcategory->category_id)
-                                            <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
-                                            @endif
+                                            <option value="{{ $subcategory->id ?? ''}}">{{ $subcategory->name ?? '' }}</option>
                                             @endforeach
                                         </select>
                                     </div>
