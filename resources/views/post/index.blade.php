@@ -48,9 +48,7 @@
                         @foreach ($posts as $post)
                             <tr>
                                 {{-- <td>{{$post['name']}}</td> --}}
-                                <td>
-                                    <a href="{{ Route('post.show', $post->id) }}" style="color: black; text-decoration: none;">{{ $post['name'] }}
-                                    </a>
+                                <td>{{ $post['name'] }}
                                 </td>
                                 <td>{{$post['author']}}</td>
                                 <td>{{ $post->category->name ?? '' }}</td>
@@ -64,6 +62,8 @@
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group">
+                                        {{-- View Button --}}
+                                        <a href="{{ Route('post.show', $post->id) }}" class="btn btn-dark mr-2">View</a>
                                         {{-- Edit Button --}}
                                         <a href="{{ Route('post.edit', $post->id) }}" class="btn btn-info mr-2">Edit</a>
                                         {{-- Delete Button --}}

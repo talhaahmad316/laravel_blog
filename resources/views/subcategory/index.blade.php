@@ -45,11 +45,7 @@
                         @foreach ($subcategories as $subcategory)
                             <tr>
                                 {{-- <td>{{ $subcategory['name'] }}</td> --}}
-                                <td>
-                                    <a href="{{ Route('subcategory.show', $subcategory->id) }}" style="color: black; text-decoration: none;">
-                                        {{ $subcategory['name'] ?? '' }}
-                                    </a>
-                                </td>
+                                <td>{{ $subcategory['name'] ?? '' }}</td>
 
                                 <td>{{ $subcategory->category->name ?? '' }}</td>
                                 <td>
@@ -60,9 +56,10 @@
                                 <td>{{ $subcategory['updated_at'] ?? '' }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
+                                        {{-- View Button --}}
+                                        <a href="{{ Route('subcategory.show', $subcategory->id) }}" class="btn btn-dark mr-2">View</a>
                                         {{-- Edit Button --}}
-                                        <a href="{{ Route('subcategory.edit', $subcategory->id) }}"
-                                            class="btn btn-info mr-2">Edit</a>
+                                        <a href="{{ Route('subcategory.edit', $subcategory->id) }}" class="btn btn-info mr-2">Edit</a>
                                         {{-- Delete Button --}}
                                         <form action="{{ route('subcategory.destroy', $subcategory->id) }}" method="POST">
                                             @csrf

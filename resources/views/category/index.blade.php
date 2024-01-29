@@ -42,10 +42,7 @@
                     <tbody>
                         @foreach ($category as $item)
                             <tr>
-                                <td>
-                                    <a href="{{ Route('category.show', $item->id) }}" style="color: black; text-decoration: none;">{{ $item['name'] }}
-                                    </a>
-                                </td>
+                                <td>{{ $item['name'] }}</td>
                                 <td>
                                     <img src="{{ asset('categories/' . $item->image) }}" class="rounded-circle"
                                         width="50px" height="50px" alt="">
@@ -54,6 +51,8 @@
                                 <td>{{ $item['updated_at'] }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
+                                        {{-- View Button --}}
+                                        <a href="{{ Route('category.show', $item->id) }}" class="btn btn-dark mr-2">View</a>
                                         {{-- Edit Button --}}
                                         <a href="{{ Route('category.edit', $item->id) }}" class="btn btn-info mr-2">Edit</a>
                                         {{-- Delete Button --}}
