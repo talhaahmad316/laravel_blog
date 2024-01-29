@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('author');
-            $table->string('category_id');
-            $table->string('subcategory_id');
-            $table->string('short_detail');
-            $table->string('long_detail');
-            $table->string('image');
+            $table->integer('category_id');
+            $table->integer('subcategory_id');
+            $table->text('short_detail');
+            $table->text('long_detail');
             $table->string('tags');
+            $table->string('image');
             $table->timestamps();
         });
     }

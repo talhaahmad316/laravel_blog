@@ -48,14 +48,6 @@ class AuthController extends Controller
         Mail::to('talhaahmad3162@gmail.com')->send(new UserMail($detail));
         return redirect('/login');
     }
-
-    /**
-     * Display all users in table
-     */
-    public function show()
-    {
-        // 
-    }
     //   User login 
     public function login(Request $request)
     {
@@ -78,28 +70,5 @@ class AuthController extends Controller
         Auth::logout();
         session()->flush();
         return redirect('login');
-    }
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

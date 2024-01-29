@@ -19,12 +19,12 @@ use App\Http\Controllers\PostController;
 //    Login Routes
 Route::get('login',function(){ return view('auth.login');});
 Route::get('user/login',[AuthController::class,'login'])->name('user.login');
-//       welcome Page Route
+//     welcome Page Route
 Route::get('/',[AuthController::class,'index'])->name('welcome'); 
 //     SignUp Routes
 Route::get('/register',function() { return view('auth.register');});
 Route::post('/user/register',[AuthController::class,'store'])->name('user.register');
-       // logout Route
+//      logout Route
 Route::post('user/logout', [AuthController::class, 'logout'])->name('user.logout');
     /**Login Register Routes Finished*/
 //     Category Route
