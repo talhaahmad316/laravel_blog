@@ -86,7 +86,7 @@ class CategoryController extends Controller
         }
         $category->name = $request->name;
         $category->save(); 
-         // this line postname is just to show the name afte edit on alert
+         // this line categoryname is just to show the name afte edit on alert
         $categoryname=Category::find($id);
         return redirect()->route('category.index')->withUpdate('Category "' . $categoryname->name . '" Updated Successfully! 🎉');
  }

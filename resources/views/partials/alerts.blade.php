@@ -19,3 +19,17 @@
     <strong>{{ $messege }}</strong>
 </div>
 @endif
+{{-- error in login alert --}}
+@if($errors->has('error'))
+<div class="alert alert-warning ">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+    {{ $errors->first('error') }}
+</div>
+@endif
+{{-- User Register Alert --}}
+@if($errors->has('register'))
+<div class="alert alert-success ">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+    {{ $errors->first('register') }}
+</div>
+@endif

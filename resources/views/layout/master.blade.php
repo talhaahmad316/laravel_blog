@@ -82,4 +82,5 @@
 {{-- <script src="{{asset('dist/js/demo.js')}}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> --}}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </html>

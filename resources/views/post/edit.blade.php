@@ -52,7 +52,7 @@
                                     {{-- category label --}}
                                     <div class="form-group">
                                         <label for="CategoryName">Select Category</label>
-                                        <select class="form-control" name="category_id">
+                                        <select class="form-control" id="categorySelect" name="category_id">
                                             <option selected disabled>Select Category</option>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id ?? ''}}" {{ ( $category->id == $post->category_id ? 'selected' : '') }}>{{ $category->name ?? ''}}</option>
@@ -65,11 +65,11 @@
                                     {{-- subcategory label --}}
                                     <div class="form-group">
                                         <label for="CategoryName">Select Subcategory</label>
-                                        <select class="form-control" name="subcategory_id" value="{{ old('subcategory_id', $post->subcategory_id) }}">
+                                        <select class="form-control" id="subcategorySelect" name="subcategory_id" value="{{ old('subcategory_id', $post->subcategory_id) }}">
                                             <option selected disabled>Select Subcategory</option>
                                             @foreach ($subcategories as $subcategory)
-                                                <option value="{{ $subcategory->id ?? ''}}" {{ ( $subcategory->id == $post->subcategory_id ? 'selected' : '') }}>{{ $category->name ?? ''}}</option>
-                                            @endforeach
+                                            <option data-category="{{ $subcategory->category_id ?? '' }}" value="{{ $subcategory->id ?? '' }}" {{ ( $subcategory->id == $post->subcategory_id ? 'selected' : '') }}>{{ $subcategory->name ?? '' }}</option>
+                                           @endforeach
                                         </select>
                                     </div>
                                     @if ($errors->has('subcategory_id'))
@@ -133,4 +133,19 @@
             </div>
         </section>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#categorySelect').change(function () {
+            var selectedCategory = $(this).val();
+            $('#subcategorySelect option').hide();
+            $('#subcategorySelect option[data-category="' + selectedCategory + '"]').show();
+            $('#subcategorySelect').val('').prop('disabled', false);
+        });
+
+        // Trigger the change event initially to set the subcategory options based on the initial category selection
+        $('#categorySelect').trigger('change');
+    });
+</script>
+
 @stop

@@ -17,15 +17,6 @@ class AuthController extends Controller
     {
         return view('welcome');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Ragister all users in date base and validation
      */
@@ -46,7 +37,7 @@ class AuthController extends Controller
         // Mail is used for send email 
         $detail=$request->all();
         Mail::to('talhaahmad3162@gmail.com')->send(new UserMail($detail));
-        return redirect('/login');
+        return redirect('/login')->withErrors(['register' => 'User Registered Successfully']);
     }
     //   User login 
     public function login(Request $request)

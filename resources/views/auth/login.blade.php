@@ -14,16 +14,11 @@
   <div class="login-logo">
     <a href="#"><b>Admin</b>LTE</a>
   </div>
-  <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
-      @if($errors->has('error'))
-    <div class="alert alert-warning ">
-      <button type="button" class="close" data-dismiss="alert">×</button>
-        {{ $errors->first('error') }}
-    </div>
-    @endif
+      {{-- Alerts --}}
+      @include('partials.alerts')
       <form action="{{ Route('user.login')}}" method="get">
         @csrf
         <div class="input-group mb-3">

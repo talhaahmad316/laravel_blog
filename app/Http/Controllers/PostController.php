@@ -33,8 +33,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate
-        ([
+        $request->validate([
             'name' => 'required',
             'author' => 'required',
             'category_id' => 'required',
@@ -85,8 +84,7 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate
-        ([
+        $request->validate([
             'name'=>'required',
             'author'=>'required',
             'category_id'=>'required',
@@ -111,9 +109,8 @@ class PostController extends Controller
         $post->long_detail=$request->long_detail;
         $post->tags=$request->tags;
         $post->save();
-        return redirect()->route('post.index')->withUpdate('Blog Updated Successfully! 🌟');
-        
-
+        $postname=Post::find($id);
+        return redirect()->route('post.index')->withUpdate('Blog name "'. $postname->name .'" Updated Successfully! 🌟');
     }
 
     /**
@@ -123,6 +120,6 @@ class PostController extends Controller
     {
         $post=Post::where('id',$id)->first();
         $post->delete();
-        return back()->withDelete('post Deleted Successfully! 🗑️');
+        return back()->withDelete('Post Deleted Successfully! 🗑️');
     }
 }
