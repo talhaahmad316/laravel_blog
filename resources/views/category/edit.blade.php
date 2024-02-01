@@ -47,9 +47,13 @@
                                         </div>
                                     </div>
                             </div>
-                            @if ($errors->has('name'))
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                                @endif
+                            @if ($errors->has('image'))
+                            <span class="text-danger">{{ $errors->first('image') }}</span>
+                            @endif
+                            <!-- Display the existing image -->
+                            @if ($category->image)
+                                <img src="{{ asset('categories/' . $category->image) }}" alt="Existing Image" class="img-fluid" width="500px">
+                            @endif
                             </div>
                                 <div class="card-footer">
                                     <button type="submit" name="submit" class="btn   btn-primary">Update</button>

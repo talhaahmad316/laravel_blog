@@ -64,6 +64,10 @@
                                         @if ($errors->has('image'))
                                             <span class="text-danger">{{ $errors->first('image') }}</span>
                                         @endif
+                                        <!-- Display the existing image -->
+                                        @if ($subcategory->image)
+                                        <img src="{{ asset('subcategories/' . $subcategory->image) }}" alt="Existing Image" class="img-fluid" width="300px" height="400px">
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="card-footer">
