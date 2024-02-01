@@ -16,7 +16,6 @@ class SubCategoryController extends Controller
         $subcategories= SubCategory::with('category')->get();
         return view('subcategory.index',compact('subcategories'));
     }
-
     /**
      * Show the form for creating a new Sub Category.
      */
@@ -25,7 +24,6 @@ class SubCategoryController extends Controller
         $categories = Category::all();
         return view('subcategory.create', compact('categories'));
     }
-
     /**
      * Store a newly created Sub Category in storage.
      */
@@ -48,7 +46,6 @@ class SubCategoryController extends Controller
         $subcategory->save();
         return redirect()->route('subcategory.index')->withCreate('SubCategory Inserted Successfully! 🌟');
     }
-
     /**
      * Display the specified Sub Category.
      */
@@ -57,7 +54,6 @@ class SubCategoryController extends Controller
         $subcategory=SubCategory::where('id',$id)->first();
         return view('subcategory.show',['subcategory'=>$subcategory]);
     }
-
     /**
      * Show the form for editing the specified Sub Category.
      */

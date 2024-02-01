@@ -19,7 +19,6 @@
                 </div>
             </div>
         </section>
-
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="text-center mb-3">
@@ -27,7 +26,6 @@
                     <img src="{{ asset('posts/' . $post->image) }}" class="img-fluid rounded"
                         style="max-height: 350px;" alt="post Image">
                 </div>
-                
                 {{-- Post Title --}}
                 <div class="row">
                     <div class="col-md-6 mx-auto">
@@ -44,7 +42,6 @@
                         <h2 class="text-primary mb-2 text-center">{{ $post->author }}</h2>
                     </div>
                 </div>
-
                 {{-- Category Name --}}
                 <div class="row">
                     <div class="col-md-6 mx-auto">
@@ -61,25 +58,21 @@
                         <h2 class="text-primary mb-2 text-center">{{ $post->subcategory->name }}</h2>
                     </div>
                 </div>
-
                 {{-- Short Description --}}
                 <div class="bg-secondary p-2 rounded text-center">
                     <h4 class="text-white">Short Description</h4>
                 </div>
                 <p class="text-primary mb-2 text-center">{{ $post->short_detail }}</p>
-
                 {{-- Long Description --}}
                 <div class="bg-secondary p-2 rounded text-center">
                     <h4 class="text-white">Long Description</h4>
                 </div>
                 <p class="text-primary mb-2 text-center">{{ $post->long_detail }}</p>
-
                 {{-- Tags --}}
                 <div class="bg-secondary p-2 rounded text-center">
                     <h4 class="text-white">Name Tags</h4>
                 </div>
                 <h2 class="text-primary mb-2 text-center">{{ $post->tags }}</h2>
-
                 {{-- Created and Updated at div --}}
                 <div class="bg-info p-2 rounded text-center">
                     <h4>Created AT : {{ $post->created_at }}</h4>

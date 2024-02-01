@@ -50,11 +50,11 @@ class AuthController extends Controller
         // login start
         if(Auth::attempt($request->only('email','password'))) 
         {
-            return redirect('/');
+            $user = Auth::user(); 
+            return redirect('/')->withCreate('You are logged in successfully, ' . $user->name);
         }
         return redirect('login')->withErrors(['error' => 'Invalid login details']);
     }
-
     // Logout Function
     public function logout()
     {

@@ -17,7 +17,6 @@ class PostController extends Controller
         $posts=Post::get();
         return view('post.index',compact('posts'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -27,7 +26,6 @@ class PostController extends Controller
         $subcategories = SubCategory::all();
         return view('post.create', compact('categories','subcategories'));
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -58,7 +56,6 @@ class PostController extends Controller
         return redirect() -> route('post.index') -> withCreate('Blog Posted Successfully! 🌟');
         
     }
-
     /**
      * Display the specified resource.
      */
@@ -67,7 +64,6 @@ class PostController extends Controller
         $post=Post::where('id',$id)->first();
         return view('post.show',['post'=>$post]);
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -78,7 +74,6 @@ class PostController extends Controller
         $post = Post::where('id', $id) -> first();
         return view('post.edit', compact('post','subcategories', 'categories'));
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -112,7 +107,6 @@ class PostController extends Controller
         $postname=Post::find($id);
         return redirect()->route('post.index')->withUpdate('Blog name "'. $postname->name .'" Updated Successfully! 🌟');
     }
-
     /**
      * Remove the specified resource from storage.
      */

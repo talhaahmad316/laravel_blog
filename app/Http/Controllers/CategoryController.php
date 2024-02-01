@@ -16,7 +16,6 @@ class CategoryController extends Controller
         $category=Category::get();
         return view('category.index',compact('category'));
     }
-
     /**
      * Show the form for creating a new category.
      */
@@ -24,7 +23,6 @@ class CategoryController extends Controller
     {
         return view('category.create');
     }
-
     /**
      * Store a newly created cetagory in storage.
      */
@@ -45,8 +43,6 @@ class CategoryController extends Controller
         $category->save();
         return redirect()->route('category.index')->withCreate('Category Inserted Successfully! 🌟');
     }
-            
-
     /**
      * Display the specified category.
      */
@@ -55,7 +51,6 @@ class CategoryController extends Controller
         $category=Category::where('id',$id)->first();
         return view('category.show',['category'=>$category]);
     }
-
     /**
      * Show the form for editing the specified category.
      */
@@ -64,7 +59,6 @@ class CategoryController extends Controller
         $category=Category::where('id',$id)->first();
         return view('category.edit',['category'=>$category]);
     }
-
     /**
      * Update the specified category in storage.
      */
@@ -89,8 +83,7 @@ class CategoryController extends Controller
          // this line categoryname is just to show the name afte edit on alert
         $categoryname=Category::find($id);
         return redirect()->route('category.index')->withUpdate('Category "' . $categoryname->name . '" Updated Successfully! 🎉');
- }
-
+    }
     /**
      * Remove the specified category from storage.
      */

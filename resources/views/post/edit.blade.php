@@ -147,5 +147,4 @@
         $('#categorySelect').trigger('change');
     });
 </script>
-
 @stop
