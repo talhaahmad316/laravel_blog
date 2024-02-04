@@ -33,6 +33,7 @@
                 <table id="example1" class="table table-bordered table-striped table-hover">
                     <thead class="thead-dark">
                         <tr>
+                            <th>#</th>
                             <th>SubCategory Name</th>
                             <th>Category Name</th>
                             <th>SubCategory Image</th>
@@ -44,7 +45,7 @@
                     <tbody>
                         @foreach ($subcategories as $subcategory)
                             <tr>
-                                {{-- <td>{{ $subcategory['name'] }}</td> --}}
+                                <th>{{ $subcategory['id'] ?? ''}}</th>
                                 <td>{{ $subcategory['name'] ?? '' }}</td>
 
                                 <td>{{ $subcategory->category->name ?? '' }}</td>
