@@ -123,7 +123,7 @@
                                         <span class="text-danger">{{ $errors->first('image') }}</span>
                                     @endif
                                     @if ($post->image)
-                                        <img src="{{ asset('posts/' . $post->image) }}" alt="Existing Image" class="img-fluid" width="300px" height="400px">
+                                        <img src="{{ asset('posts/' . $post->image) }}" alt="Existing Image" class="img-fluid" width="200px">
                                         @endif
                                 </div>
                                 <div class="card-footer">

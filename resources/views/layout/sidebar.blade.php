@@ -9,7 +9,7 @@
         <img src="{{asset('dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">Talha Ahmad</a>
+        <a href="{{route('welcome')}}" class="d-block">{{ auth()->user()->name }}</a>
       </div>
     </div>
     <div class="form-inline">

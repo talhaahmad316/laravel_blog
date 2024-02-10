@@ -52,7 +52,7 @@
                             @endif
                             <!-- Display the existing image -->
                             @if ($category->image)
-                                <img src="{{ asset('categories/' . $category->image) }}" alt="Existing Image" class="img-fluid" width="500px">
+                                <img src="{{ asset('categories/' . $category->image) }}" alt="Existing Image" class="img-fluid mt-3" width="200px">
                             @endif
                             </div>
                                 <div class="card-footer">

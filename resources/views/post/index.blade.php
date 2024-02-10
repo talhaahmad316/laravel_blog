@@ -47,14 +47,14 @@
                     <tbody>
                         @foreach ($posts as $post)
                         <tr>
-                            <td>{{ $post['name'] }}
+                            <td>{{Str::limit($post['name'],20) }}
                             </td>
-                            <td>{{$post['author']}}</td>
+                            <td>{{ $post['author']}}</td>
                             <td>{{ $post->category->name ?? '' }}</td>
                             <td>{{ $post->subcategory->name ?? '' }}</td>
                             <td>{{ Str::limit($post['short_detail'], 20) }}</td>
                             <td>{{ Str::limit($post['long_detail'], 20) }}</td>
-                            <td>{{$post['tags']}}</td>
+                            <td>{{ Str::limit($post['tags'],20)}}</td>
                             <td>
                                 <img src="{{ asset('posts/' . $post->image) }}" alt="" class="rounded-circle" width="50px" height="50px">
                             </td>
