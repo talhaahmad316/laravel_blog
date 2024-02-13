@@ -12,13 +12,13 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display welcome Page.
      */
     public function index()
     {
         return view('welcome');
     }
-    // Show Registretion page
+    // Display Registretion page
     public function registerpage( )
     {
         return view('auth.register');
@@ -43,7 +43,7 @@ class AuthController extends Controller
         // Mail is used for send email 
         $detail=$request->all();
         Mail::to('talhaahmad3162@gmail.com')->send(new UserMail($detail));
-        return redirect('user/login')->withErrors(['register' => 'User Registered Successfully']);
+        return redirect('user/loginpage')->withErrors(['register' => 'User Registered Successfully']);
     }
     // Show Login page
     public function loginpage()
@@ -64,13 +64,13 @@ class AuthController extends Controller
             $user = Auth::user(); 
             return redirect('/')->withCreate('You are logged in successfully, ' . $user->name);
         }
-        return redirect('user/login')->withErrors(['error' => 'Invalid login details']);
+        return redirect('user/loginpage')->withErrors(['error' => 'Invalid login details']);
     }
     // Logout Function
     public function logout()
     {
         Auth::logout();
         session()->flush();
-        return redirect('user/login');
+        return redirect('user/loginpage');
     }
 }

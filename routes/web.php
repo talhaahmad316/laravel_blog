@@ -16,15 +16,13 @@ use App\Http\Controllers\PostController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::group(['user'],function(){
     Route::group(['middleware'=>'guest'],function(){
-        // login Routes
-        Route::get('user/login',[AuthController::class,'loginpage'])->name('user.loginin');
+        // User login Routes
+        Route::get('user/loginpage',[AuthController::class,'loginpage'])->name('user.loginpage');
         Route::get('user/processlogin',[AuthController::class,'login'])->name('user.login');
-
-        // SignUp Routes
-        Route::get('/user/register',[AuthController::class,'registerpage'])->name('user.registerin');
+        // User Register Routes
+        Route::get('/user/registerpage',[AuthController::class,'registerpage'])->name('user.registerpage');
         Route::post('/user/processregister',[AuthController::class,'register'])->name('user.register');
     });
     Route::group(['middleware'=>'auth'],function(){

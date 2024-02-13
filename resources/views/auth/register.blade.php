@@ -58,7 +58,7 @@
           </div>
         </div>
       </form>
-      <a href="{{url('user/login')}}" class="text-center">I already have a membership</a>
+      <a href="{{url('user/loginpage')}}" class="text-center">I already have a membership</a>
     </div>
   </div>
 </div>
