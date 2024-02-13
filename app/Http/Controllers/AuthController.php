@@ -18,10 +18,15 @@ class AuthController extends Controller
     {
         return view('welcome');
     }
+    // Show Registretion page
+    public function registerpage( )
+    {
+        return view('auth.register');
+    }
     /**
      * Ragister all users in date base and validation
      */
-    public function store(Request $request)
+    public function register(Request $request)
     {
         // Validation Start
         $request->validate([
@@ -38,9 +43,14 @@ class AuthController extends Controller
         // Mail is used for send email 
         $detail=$request->all();
         Mail::to('talhaahmad3162@gmail.com')->send(new UserMail($detail));
-        return redirect('/login')->withErrors(['register' => 'User Registered Successfully']);
+        return redirect('user/login')->withErrors(['register' => 'User Registered Successfully']);
     }
-    //   User login 
+    // Show Login page
+    public function loginpage()
+    {
+        return view('auth.login');
+    }
+    //   User login and Validation
     public function login(Request $request)
     {
         // Validation
@@ -54,13 +64,13 @@ class AuthController extends Controller
             $user = Auth::user(); 
             return redirect('/')->withCreate('You are logged in successfully, ' . $user->name);
         }
-        return redirect('login')->withErrors(['error' => 'Invalid login details']);
+        return redirect('user/login')->withErrors(['error' => 'Invalid login details']);
     }
     // Logout Function
     public function logout()
     {
         Auth::logout();
         session()->flush();
-        return redirect('login');
+        return redirect('user/login');
     }
 }

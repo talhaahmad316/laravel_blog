@@ -16,17 +16,23 @@ use App\Http\Controllers\PostController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//    Login Routes
-Route::get('login',function(){ return view('auth.login');});
-Route::get('user/login',[AuthController::class,'login'])->name('user.login');
-//     welcome Page Route
-Route::get('/',[AuthController::class,'index'])->name('welcome'); 
-//     SignUp Routes
-Route::get('/register',function() { return view('auth.register');});
-Route::post('/user/register',[AuthController::class,'store'])->name('user.register');
-//     logout Route
-Route::post('user/logout', [AuthController::class, 'logout'])->name('user.logout');
-    /**Login Register Routes Finished*/
+
+Route::group(['user'],function(){
+    Route::group(['middleware'=>'guest'],function(){
+        // login Routes
+        Route::get('user/login',[AuthController::class,'loginpage'])->name('user.loginin');
+        Route::get('user/processlogin',[AuthController::class,'login'])->name('user.login');
+
+        // SignUp Routes
+        Route::get('/user/register',[AuthController::class,'registerpage'])->name('user.registerin');
+        Route::post('/user/processregister',[AuthController::class,'register'])->name('user.register');
+    });
+    Route::group(['middleware'=>'auth'],function(){
+        // Wellcome page And Logout Routes
+        Route::get('/',[AuthController::class,'index'])->name('welcome'); 
+        Route::post('user/logout', [AuthController::class, 'logout'])->name('user.logout');
+    });
+});
 //     Category Route
 Route::resource('category',CategoryController::class);
 //     Sub Category Route
