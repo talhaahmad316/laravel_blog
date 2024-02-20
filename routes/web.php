@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,22 +20,20 @@ use App\Http\Controllers\PostController;
 */
 Route::group(['user'],function(){
     Route::group(['middleware'=>'guest'],function(){
-        // User login Routes
         Route::get('user/loginpage',[AuthController::class,'loginpage'])->name('user.loginpage');
         Route::get('user/processlogin',[AuthController::class,'login'])->name('user.login');
-        // User Register Routes
         Route::get('/user/registerpage',[AuthController::class,'registerpage'])->name('user.registerpage');
         Route::post('/user/processregister',[AuthController::class,'register'])->name('user.register');
     });
     Route::group(['middleware'=>'auth'],function(){
-        // Wellcome page And Logout Routes
         Route::get('/',[AuthController::class,'index'])->name('welcome'); 
         Route::post('user/logout', [AuthController::class, 'logout'])->name('user.logout');
+        Route::resource('category',CategoryController::class);
+        Route::resource('subcategory',SubCategoryController::class);
+        Route::resource('post',PostController::class);
+        Route::resource('permission',PermissionController::class);
+        Route::resource('role',RoleController::class);
+        Route::get('role/{roleId}/add/permission',[RoleController::class,'AddPermissionToRoles'])->name('role.addpermission');
+        Route::post('role/{roleId}/give/permission',[RoleController::class,'GivePermissionToRoles'])->name('role.givepermission');
     });
 });
-//     Category Route
-Route::resource('category',CategoryController::class);
-//     Sub Category Route
-Route::resource('subcategory',SubCategoryController::class);
-//     Blog Posting Route
-Route::resource('post',PostController::class);

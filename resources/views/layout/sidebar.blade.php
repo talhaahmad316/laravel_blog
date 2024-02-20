@@ -96,6 +96,55 @@
             </li>
           </ul>
         </li>
+        {{-- Permission --}}
+        <li class="nav-item">
+          <a href="#" class="nav-link active">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Permission
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('permission.create') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Create Permission</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('permission.index') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Permissions</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        {{-- Role --}}
+        <li class="nav-item">
+          <a href="#" class="nav-link active">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Role
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('role.create') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Create Role</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('role.index') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Roles</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
       </ul>
     </nav>
   </div>
