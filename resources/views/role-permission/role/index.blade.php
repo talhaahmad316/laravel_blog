@@ -45,8 +45,9 @@
                                 <td>{{ $role['name'] }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        {{--Role and Permission Button --}}
-                                        <a href="{{ url('role/' . $role->id . '/add/permission') }}" class="btn btn-success mr-2">Add/Edit Role Permission</a>
+                                        {{-- Role and Permission Button --}}
+                                        <a href="{{ url('role/' . $role->id . '/add/permission') }}"
+                                            class="btn btn-success mr-2">Add/Edit Role Permission</a>
                                         {{-- Edit Button --}}
                                         <a href="{{ Route('role.edit', $role->id) }}" class="btn btn-info mr-2">Edit</a>
                                         {{-- Delete Button --}}

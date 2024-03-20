@@ -23,8 +23,8 @@
             <div class="col-lg-8">
                 <div class="text-center mb-3">
                     <h4 class="text-white bg-secondary p-2 rounded mb-4">Post Image:</h4>
-                    <img src="{{ asset('posts/' . $post->image) }}" class="img-fluid rounded"
-                        style="max-height: 350px;" alt="post Image">
+                    <img src="{{ asset('posts/' . $post->image) }}" class="img-fluid rounded" style="max-height: 350px;"
+                        alt="post Image">
                 </div>
                 {{-- Post Title --}}
                 <div class="row">

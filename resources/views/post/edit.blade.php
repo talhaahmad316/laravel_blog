@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Edit Blogs : {{$post->name}}</h1>
+                        <h1 class="m-0">Edit Blogs : {{ $post->name }}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <label for="CategoryName">Post Title</label>
                                         <input type="text" name="name" class="form-control" id="PostName"
-                                               placeholder="Enter Post Title" value="{{ old('name', $post->name) }}">
+                                            placeholder="Enter Post Title" value="{{ old('name', $post->name) }}">
                                     </div>
                                     @if ($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -44,7 +44,7 @@
                                     <div class="form-group">
                                         <label for="CategoryName">Author Name</label>
                                         <input type="text" name="author" class="form-control" id="AuthorName"
-                                               placeholder="Enter Author Name" value="{{ old('auther', $post->author) }}">
+                                            placeholder="Enter Author Name" value="{{ old('auther', $post->author) }}">
                                     </div>
                                     @if ($errors->has('author'))
                                         <span class="text-danger">{{ $errors->first('author') }}</span>
@@ -55,7 +55,9 @@
                                         <select class="form-control" id="categorySelect" name="category_id">
                                             <option selected disabled>Select Category</option>
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id ?? ''}}" {{ ( $category->id == $post->category_id ? 'selected' : '') }}>{{ $category->name ?? ''}}</option>
+                                                <option value="{{ $category->id ?? '' }}"
+                                                    {{ $category->id == $post->category_id ? 'selected' : '' }}>
+                                                    {{ $category->name ?? '' }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -65,11 +67,15 @@
                                     {{-- subcategory label --}}
                                     <div class="form-group">
                                         <label for="CategoryName">Select Subcategory</label>
-                                        <select class="form-control" id="subcategorySelect" name="subcategory_id" value="{{ old('subcategory_id', $post->subcategory_id) }}">
+                                        <select class="form-control" id="subcategorySelect" name="subcategory_id"
+                                            value="{{ old('subcategory_id', $post->subcategory_id) }}">
                                             <option selected disabled>Select Subcategory</option>
                                             @foreach ($subcategories as $subcategory)
-                                            <option data-category="{{ $subcategory->category_id ?? '' }}" value="{{ $subcategory->id ?? '' }}" {{ ( $subcategory->id == $post->subcategory_id ? 'selected' : '') }}>{{ $subcategory->name ?? '' }}</option>
-                                           @endforeach
+                                                <option data-category="{{ $subcategory->category_id ?? '' }}"
+                                                    value="{{ $subcategory->id ?? '' }}"
+                                                    {{ $subcategory->id == $post->subcategory_id ? 'selected' : '' }}>
+                                                    {{ $subcategory->name ?? '' }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     @if ($errors->has('subcategory_id'))
@@ -79,9 +85,8 @@
                                     <div class="form-group">
                                         <label for="exampleInputFile">Short Description</label>
                                         <div class="form-floating">
-                                            <textarea class="form-control" name="short_detail"
-                                                      placeholder="Add Short Description" id="floatingTextarea2"
-                                                      style="height: 100px">{{ old('short_detail', $post->short_detail) }}</textarea>
+                                            <textarea class="form-control" name="short_detail" placeholder="Add Short Description" id="floatingTextarea2"
+                                                style="height: 100px">{{ old('short_detail', $post->short_detail) }}</textarea>
                                         </div>
                                     </div>
                                     @if ($errors->has('short_detail'))
@@ -91,9 +96,8 @@
                                     <div class="form-group">
                                         <label for="exampleInputFile">Long Description</label>
                                         <div class="form-floating">
-                                            <textarea class="form-control" name="long_detail"
-                                                      placeholder="Add Long Description" id="floatingTextarea2"
-                                                      style="height: 100px">{{ old('long_detail', $post->long_detail) }}</textarea>
+                                            <textarea class="form-control" name="long_detail" placeholder="Add Long Description" id="floatingTextarea2"
+                                                style="height: 100px">{{ old('long_detail', $post->long_detail) }}</textarea>
                                         </div>
                                     </div>
                                     @if ($errors->has('long_detail'))
@@ -103,7 +107,7 @@
                                     <div class="form-group">
                                         <label for="CategoryName">Post Tags</label>
                                         <input type="text" name="tags" class="form-control" id="PostName"
-                                               placeholder="Enter Post Title" value="{{ old('tags', $post->tags) }}">
+                                            placeholder="Enter Post Title" value="{{ old('tags', $post->tags) }}">
                                     </div>
                                     @if ($errors->has('tags'))
                                         <span class="text-danger">{{ $errors->first('tags') }}</span>
@@ -123,8 +127,9 @@
                                         <span class="text-danger">{{ $errors->first('image') }}</span>
                                     @endif
                                     @if ($post->image)
-                                        <img src="{{ asset('posts/' . $post->image) }}" alt="Existing Image" class="img-fluid" width="200px">
-                                        @endif
+                                        <img src="{{ asset('posts/' . $post->image) }}" alt="Existing Image"
+                                            class="img-fluid" width="200px">
+                                    @endif
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" name="submit" class="btn btn-primary">Update</button>
@@ -137,17 +142,17 @@
         </section>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#categorySelect').change(function () {
-            var selectedCategory = $(this).val();
-            $('#subcategorySelect option').hide();
-            $('#subcategorySelect option[data-category="' + selectedCategory + '"]').show();
-            $('#subcategorySelect').val('').prop('disabled', false);
-        });
+    <script>
+        $(document).ready(function() {
+            $('#categorySelect').change(function() {
+                var selectedCategory = $(this).val();
+                $('#subcategorySelect option').hide();
+                $('#subcategorySelect option[data-category="' + selectedCategory + '"]').show();
+                $('#subcategorySelect').val('').prop('disabled', false);
+            });
 
-        // Trigger the change event initially to set the subcategory options based on the initial category selection
-        $('#categorySelect').trigger('change');
-    });
-</script>
+            // Trigger the change event initially to set the subcategory options based on the initial category selection
+            $('#categorySelect').trigger('change');
+        });
+    </script>
 @stop

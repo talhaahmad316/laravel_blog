@@ -28,7 +28,7 @@
                                 <h3 class="card-title">Category Details</h3>
                             </div>
                             <div class="card-body text-center">
-                                
+
                                 <div class="text-center mb-3">
                                     <h4 class="text-white bg-secondary p-2 rounded mb-4">Category Image:</h4>
                                     <img src="{{ asset('categories/' . $category->image) }}" class="img-fluid rounded"

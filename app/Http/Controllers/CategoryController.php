@@ -13,8 +13,8 @@ class CategoryController extends Controller
     public function index()
     {
         // Data Display in Table
-        $category=Category::get();
-        return view('category.index',compact('category'));
+        $category = Category::get();
+        return view('category.index', compact('category'));
     }
     /**
      * Show the form for creating a new category.
@@ -30,12 +30,12 @@ class CategoryController extends Controller
     {
         // Validation
         $request->validate([
-            'image'=>'required|mimes:jpeg,jpg,png,gif|max:10000',
-            'name'=>'required',
+            'image' => 'required|mimes:jpeg,jpg,png,gif|max:10000',
+            'name' => 'required',
         ]);
         // Name Image
-        $imageName = time().'.'.$request->image->extension();
-        $request->image->move(public_path('categories'),$imageName);
+        $imageName = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('categories'), $imageName);
         // Data Insertion
         $category = new Category;
         $category->image = $imageName;
@@ -48,40 +48,39 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        $category=Category::where('id',$id)->first();
-        return view('category.show',['category'=>$category]);
+        $category = Category::where('id', $id)->first();
+        return view('category.show', ['category' => $category]);
     }
     /**
      * Show the form for editing the specified category.
      */
     public function edit(string $id)
     {
-        $category=Category::where('id',$id)->first();
-        return view('category.edit',['category'=>$category]);
+        $category = Category::where('id', $id)->first();
+        return view('category.edit', ['category' => $category]);
     }
     /**
      * Update the specified category in storage.
      */
     public function update(Request $request, string $id)
     {
-       
+
         $request->validate([
 
-            'image'=>'nullable|mimes:jpeg,jpg,png,gif|max:10000',
-            'name'=>'required',
+            'image' => 'nullable|mimes:jpeg,jpg,png,gif|max:10000',
+            'name' => 'required',
         ]);
 
-        $category=Category::where('id',$id)->first();
-        if($request->hasFile('image'))
-        {
-            $imageName=time().'.'.$request->image->extension();
-            $request->image->move(public_path('categories'),$imageName);
+        $category = Category::where('id', $id)->first();
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('categories'), $imageName);
             $category->image = $imageName;
         }
         $category->name = $request->name;
-        $category->save(); 
-         // this line categoryname is just to show the name afte edit on alert
-        $categoryname=Category::find($id);
+        $category->save();
+        // this line $categoryname is just to show the name after edit on alert
+        $categoryname = Category::find($id);
         return redirect()->route('category.index')->withUpdate('Category "' . $categoryname->name . '" Updated Successfully! 🎉');
     }
     /**
@@ -89,7 +88,7 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $category=Category::where('id',$id)->first();
+        $category = Category::where('id', $id)->first();
         $category->delete();
         return back()->withDelete('Category Deleted Successfully! 🗑️');
     }

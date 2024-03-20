@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-<title>AdminLTE 3 | Dashboard</title>
+    <title>AdminLTE 3 | Dashboard</title>
 @stop
 @section('content')
     <div class="content-wrapper">
@@ -45,7 +45,9 @@
                                         <select class="form-control" name="category_id">
                                             <option selected disabled>Open this select menu</option>
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id ?? ''}}" {{ ( $category->id == $subcategory->category_id ? 'selected' : '') }}>{{ $category->name ?? ''}}</option>
+                                                <option value="{{ $category->id ?? '' }}"
+                                                    {{ $category->id == $subcategory->category_id ? 'selected' : '' }}>
+                                                    {{ $category->name ?? '' }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -66,7 +68,8 @@
                                         @endif
                                         <!-- Display the existing image -->
                                         @if ($subcategory->image)
-                                        <img src="{{ asset('subcategories/' . $subcategory->image) }}" alt="Existing Image" class="img-fluid mt-3" width="200px">
+                                            <img src="{{ asset('subcategories/' . $subcategory->image) }}"
+                                                alt="Existing Image" class="img-fluid mt-3" width="200px">
                                         @endif
                                     </div>
                                 </div>

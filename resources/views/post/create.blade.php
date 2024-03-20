@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <a href="{{url('post')}}" class="btn btn-info">All Posts</a>
+                            <a href="{{ url('post') }}" class="btn btn-info">All Posts</a>
                         </ol>
                     </div>
                 </div>
@@ -26,14 +26,14 @@
                             <div class="card-header">
                                 <h3 class="card-title">Post Blogs</h3>
                             </div>
-                            <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     {{-- title label --}}
                                     <div class="form-group">
                                         <label for="CategoryName">Post Title</label>
                                         <input type="text" name="name" class="form-control" id="PostName"
-                                               placeholder="Enter Post Title" value="{{old('name')}}">
+                                            placeholder="Enter Post Title" value="{{ old('name') }}">
                                     </div>
                                     @if ($errors->has('name'))
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -42,7 +42,7 @@
                                     <div class="form-group">
                                         <label for="CategoryName">Author Name</label>
                                         <input type="text" name="author" class="form-control" id="AuthorName"
-                                               placeholder="Enter Author Name" value="{{old('author')}}">
+                                            placeholder="Enter Author Name" value="{{ old('author') }}">
                                     </div>
                                     @if ($errors->has('author'))
                                         <span class="text-danger">{{ $errors->first('author') }}</span>
@@ -50,38 +50,42 @@
                                     {{-- category label --}}
                                     <div class="form-group">
                                         <label for="CategoryName">Select Category</label>
-                                        <select class="form-control" id="categorySelect" name="category_id" value="{{ old('category_id') }}">
+                                        <select class="form-control" id="categorySelect" name="category_id"
+                                            value="{{ old('category_id') }}">
                                             <option selected disabled>Select Category</option>
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id ?? '' }}">{{ $category->name ?? '' }}</option>
+                                                <option value="{{ $category->id ?? '' }}">{{ $category->name ?? '' }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
                                     @if ($errors->has('category_id'))
                                         <span class="text-danger">{{ $errors->first('category_id') }}</span>
                                     @endif
-                                
+
                                     {{-- subcategory label --}}
                                     <div class="form-group">
                                         <label for="CategoryName">Select Subcategory</label>
-                                        <select class="form-control" id="subcategorySelect" name="subcategory_id" value="{{ old('subcategory_id') }}">
+                                        <select class="form-control" id="subcategorySelect" name="subcategory_id"
+                                            value="{{ old('subcategory_id') }}">
                                             <option selected disabled>Select Subcategory</option>
                                             @foreach ($subcategories as $subcategory)
-                                                <option data-category="{{ $subcategory->category_id ?? '' }}" value="{{ $subcategory->id ?? '' }}">{{ $subcategory->name ?? '' }}</option>
+                                                <option data-category="{{ $subcategory->category_id ?? '' }}"
+                                                    value="{{ $subcategory->id ?? '' }}">{{ $subcategory->name ?? '' }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
                                     @if ($errors->has('subcategory_id'))
                                         <span class="text-danger">{{ $errors->first('subcategory_id') }}</span>
                                     @endif
-                                    
+
                                     {{-- Short Description label --}}
                                     <div class="form-group">
                                         <label for="exampleInputFile">Short Description</label>
                                         <div class="form-floating">
-                                            <textarea class="form-control" name="short_detail"
-                                                      placeholder="Add Short Description" id="floatingTextarea2"
-                                                      style="height: 100px" value="{{old('short_detail')}}"></textarea>
+                                            <textarea class="form-control" name="short_detail" placeholder="Add Short Description" id="floatingTextarea2"
+                                                style="height: 100px" value="{{ old('short_detail') }}"></textarea>
                                         </div>
                                     </div>
                                     @if ($errors->has('short_detail'))
@@ -91,9 +95,8 @@
                                     <div class="form-group">
                                         <label for="exampleInputFile">Long Description</label>
                                         <div class="form-floating">
-                                            <textarea class="form-control" name="long_detail"
-                                                      placeholder="Add Long Description" id="floatingTextarea2"
-                                                      style="height: 100px" value="{{old('long_detail')}}"></textarea>
+                                            <textarea class="form-control" name="long_detail" placeholder="Add Long Description" id="floatingTextarea2"
+                                                style="height: 100px" value="{{ old('long_detail') }}"></textarea>
                                         </div>
                                     </div>
                                     @if ($errors->has('long_detail'))
@@ -103,7 +106,7 @@
                                     <div class="form-group">
                                         <label for="CategoryName">Post Tags</label>
                                         <input type="text" name="tags" class="form-control" id="PostName"
-                                               placeholder="Enter Post Title" value="{{old('tags')}}">
+                                            placeholder="Enter Post Title" value="{{ old('tags') }}">
                                     </div>
                                     @if ($errors->has('tags'))
                                         <span class="text-danger">{{ $errors->first('tags') }}</span>
@@ -114,7 +117,7 @@
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" name="image" class="custom-file-input"
-                                                    id="exampleInputFile" value="{{old('image')}}">
+                                                    id="exampleInputFile" value="{{ old('image') }}">
                                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                             </div>
                                         </div>
@@ -133,16 +136,16 @@
             </div>
         </section>
     </div>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#categorySelect').change(function () {
-            var selectedCategory = $(this).val();
-            $('#subcategorySelect option').hide();
-            $('#subcategorySelect option[data-category="' + selectedCategory + '"]').show();
-            $('#subcategorySelect').val('').prop('disabled', false);
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#categorySelect').change(function() {
+                var selectedCategory = $(this).val();
+                $('#subcategorySelect option').hide();
+                $('#subcategorySelect option[data-category="' + selectedCategory + '"]').show();
+                $('#subcategorySelect').val('').prop('disabled', false);
+            });
         });
-    });
-</script>
+    </script>
 
 @stop

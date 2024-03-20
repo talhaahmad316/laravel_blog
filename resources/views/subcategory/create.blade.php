@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-<title>AdminLTE 3 | Dashboard</title>
+    <title>AdminLTE 3 | Dashboard</title>
 @stop
 @section('content')
     <div class="content-wrapper">
@@ -42,7 +42,8 @@
                                         <select class="form-control" name="category_id" value="{{ old('category_id') }}">
                                             <option selected disabled>Select Category</option>
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id ?? ''}}">{{ $category->name ?? '' }}</option>
+                                                <option value="{{ $category->id ?? '' }}">{{ $category->name ?? '' }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>

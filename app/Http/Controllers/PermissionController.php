@@ -12,8 +12,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions=Permission::get();
-        return view('role-permission.permission.index',compact('permissions'));
+        $permissions = Permission::get();
+        return view('role-permission.permission.index', compact('permissions'));
     }
     /**
      * Show the form for creating a new Permission.
@@ -28,11 +28,10 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required|string|unique:permissions,name'
+            'name' => 'required|string|unique:permissions,name'
         ]);
         Permission::create(['name' => $request->name]);
-        return redirect()->route('permission.index')
-                         ->withCreate('Permission Created Successfully');
+        return redirect()->route('permission.index')->withCreate('Permission Created Successfully! 🌟');
     }
     /**
      * Display the specified Permission.
@@ -44,10 +43,10 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified Permission.
      */
-    public function edit(Request $request,Permission $permission)
+    public function edit(Request $request, Permission $permission)
     {
-        return view('role-permission.permission.edit',[
-            'permission'=>$permission
+        return view('role-permission.permission.edit', [
+                    'permission' => $permission
         ]);
     }
     /**
@@ -56,25 +55,24 @@ class PermissionController extends Controller
     public function update(Request $request, Permission $permission)
     {
         $request->validate([
-            'name'=>[
+            'name' => [
                 'required',
                 'string',
-                'unique:permissions,name,'.$permission->id
-                    ]
+                'unique:permissions,name,' . $permission->id
+            ]
         ]);
         $permission->update([
             'name' => $request->name
         ]);
-        return redirect()->route('permission.index')
-                         ->withUpdate('Permission Updated Successfully');
+        return redirect()->route('permission.index')->withUpdate('Permission Updated Successfully! 🎉');
     }
     /**
      * Remove the specified Permission from storage.
      */
     public function destroy($permissionId)
     {
-        $permission=Permission::find($permissionId);
+        $permission = Permission::find($permissionId);
         $permission->delete();
-        return back()->withDelete('Permission Deleted Successfully');
+        return back()->withDelete('Permission Deleted Successfully! 🗑️');
     }
 }

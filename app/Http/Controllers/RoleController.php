@@ -14,8 +14,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles=Role::get();
-        return view('role-permission.role.index',compact('roles'));
+        $roles = Role::get();
+        return view('role-permission.role.index', compact('roles'));
     }
     /**
      * Show the form for creating a new Role.
@@ -30,11 +30,10 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required|string|unique:roles,name'
+            'name' => 'required|string|unique:roles,name'
         ]);
         Role::create(['name' => $request->name]);
-        return redirect()->route('role.index')
-                         ->withCreate('Role Created Successfully');
+        return redirect()->route('role.index')->withCreate('Role Created Successfully! 🌟');
     }
     /**
      * Display the specified Role.
@@ -46,10 +45,10 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified Role.
      */
-    public function edit(Request $request,Role $role)
+    public function edit(Request $request, Role $role)
     {
-        return view('role-permission.role.edit',[
-            'role'=>$role
+        return view('role-permission.role.edit', [
+                    'role' => $role
         ]);
     }
     /**
@@ -58,50 +57,43 @@ class RoleController extends Controller
     public function update(Request $request, Role $role)
     {
         $request->validate([
-            'name'=>[
-                'required',
-                'string',
-                'unique:roles,name,'.$role->id
-                    ]
+            'name' => ['required','string','unique:roles,name,' . $role->id]
         ]);
-        $role->update([
-            'name' => $request->name
-        ]);
-        return redirect()->route('role.index')
-                         ->withUpdate('Role Updated Successfully');
+        $role->update(['name' => $request->name]);
+        return redirect()->route('role.index')->withUpdate('Role Updated Successfully! 🎉');
     }
     /**
      * Remove the specified Role from storage.
      */
     public function destroy($roleId)
     {
-        $role=Role::find($roleId);
+        $role = Role::find($roleId);
         $role->delete();
-        return back()->withDelete('Role Deleted Successfully');
+        return back()->withDelete('Role Deleted Successfully! 🗑️');
     }
     // This method will show permission page and  Permission checkbox 
     public function AddPermissionToRoles($roleId)
     {
-        $permissions=Permission::get();
-        $role=Role::findOrFail($roleId);
-        $rolePermissions=DB::table('role_has_permissions')
-                           ->where('role_has_permissions.role_id',$role->id)
-                           ->pluck('role_has_permissions.permission_id',
-                                   'role_has_permissions.permission_id')
-                           ->all();
-        return view('role-permission.role.add-permission',[
-            'permissions'=>$permissions,
-            'role'=>$role,
-            'rolePermissions'=>$rolePermissions,
+        $permissions = Permission::get();
+        $role = Role::findOrFail($roleId);
+        $rolePermissions = DB::table('role_has_permissions')
+            ->where('role_has_permissions.role_id', $role->id)
+            ->pluck('role_has_permissions.permission_id',
+                    'role_has_permissions.permission_id')
+            ->all();
+        return view('role-permission.role.add-permission', [
+            'permissions' => $permissions,
+            'role' => $role,
+            'rolePermissions' => $rolePermissions,
         ]);
     }
     // This method will Give permission
     public function GivePermissionToRoles(Request $request, $roleId)
     {
         $request->validate([
-            'permission'=>'required'
+            'permission' => 'required'
         ]);
-        $role=Role::findOrFail($roleId);
+        $role = Role::findOrFail($roleId);
         $role->syncPermissions($request->permission);
         return back()->withCreate('Permission Granted');
     }

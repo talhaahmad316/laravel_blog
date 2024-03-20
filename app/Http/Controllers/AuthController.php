@@ -19,7 +19,7 @@ class AuthController extends Controller
         return view('welcome');
     }
     // Display Registretion page
-    public function registerpage( )
+    public function registerpage()
     {
         return view('auth.register');
     }
@@ -28,22 +28,28 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        // Validation Start
+        // Validation
         $request->validate([
-            'name'=>'required',
-            'email'=>'required|email|unique:users',
-            'password'=>'required',
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required',
         ]);
         // Data Enter into Database
-        $user=new User;
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->password = Hash::make($request->password); 
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
         $user->save();
         // Mail is used for send email 
-        $detail=$request->all();
-        Mail::to('talhaahmad3162@gmail.com')->send(new UserMail($detail));
+        Mail::to('talhaahmad3162@gmail.com')->send(new UserMail($user));
         return redirect('user/loginpage')->withErrors(['register' => 'User Registered Successfully']);
+    }
+    function verifyEmail($id)
+    {
+        $id = decrypt($id);
+        $user = User::findOrFail($id);
+        $user->email_verified_at = now();
+        $user->save();
     }
     // Show Login page
     public function loginpage()
@@ -55,14 +61,18 @@ class AuthController extends Controller
     {
         // Validation
         $request->validate([
-            'email'=>'required',
-            'password'=>'required',
+            'email' => 'required',
+            'password' => 'required',
         ]);
         // login start
-        if(Auth::attempt($request->only('email','password'))) 
-        {
-            $user = Auth::user(); 
-            return redirect('/')->withCreate('You are logged in successfully, ' . $user->name);
+        if (Auth::attempt($request->only('email', 'password'))) {
+            if (Auth::user()->email_verified_at !== null) {
+                $user = Auth::user();
+                return redirect('/')->withCreate('You are logged in successfully, ' . $user->name);
+            } else {
+                Auth::logout();
+                return redirect('user/loginpage')->withErrors(['error' => 'Please verify your email address before logging in!']);
+            }
         }
         return redirect('user/loginpage')->withErrors(['error' => 'Invalid login details']);
     }

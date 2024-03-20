@@ -18,12 +18,13 @@ use App\Http\Controllers\RoleController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::group(['user'],function(){
+Route::group(['prefix'=>'/'],function(){
     Route::group(['middleware'=>'guest'],function(){
         Route::get('user/loginpage',[AuthController::class,'loginpage'])->name('user.loginpage');
         Route::get('user/processlogin',[AuthController::class,'login'])->name('user.login');
         Route::get('/user/registerpage',[AuthController::class,'registerpage'])->name('user.registerpage');
         Route::post('/user/processregister',[AuthController::class,'register'])->name('user.register');
+        Route::get('verify/{id}', [AuthController::class, 'verifyEmail'])->name('verifyEmail');
     });
     Route::group(['middleware'=>'auth'],function(){
         Route::get('/',[AuthController::class,'index'])->name('welcome'); 

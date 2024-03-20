@@ -45,7 +45,7 @@
                     <tbody>
                         @foreach ($subcategories as $subcategory)
                             <tr>
-                                <th>{{ $subcategory['id'] ?? ''}}</th>
+                                <th>{{ $subcategory['id'] ?? '' }}</th>
                                 <td>{{ $subcategory['name'] ?? '' }}</td>
 
                                 <td>{{ $subcategory->category->name ?? '' }}</td>
@@ -58,9 +58,11 @@
                                 <td>
                                     <div class="btn-group" role="group">
                                         {{-- View Button --}}
-                                        <a href="{{ Route('subcategory.show', $subcategory->id) }}" class="btn btn-dark mr-2">View</a>
+                                        <a href="{{ Route('subcategory.show', $subcategory->id) }}"
+                                            class="btn btn-dark mr-2">View</a>
                                         {{-- Edit Button --}}
-                                        <a href="{{ Route('subcategory.edit', $subcategory->id) }}" class="btn btn-info mr-2">Edit</a>
+                                        <a href="{{ Route('subcategory.edit', $subcategory->id) }}"
+                                            class="btn btn-info mr-2">Edit</a>
                                         {{-- Delete Button --}}
                                         <form action="{{ route('subcategory.destroy', $subcategory->id) }}" method="POST">
                                             @csrf
