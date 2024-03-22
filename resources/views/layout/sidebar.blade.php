@@ -99,6 +99,30 @@
                          </li>
                      </ul>
                  </li>
+                 {{-- Products Crud --}}
+                 <li class="nav-item">
+                     <a href="#" class="nav-link active">
+                         <i class="nav-icon fas fa-copy"></i>
+                         <p>
+                            Products
+                             <i class="right fas fa-angle-left"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="{{ route('products.create') }}" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Create Products</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="{{ url('products') }}" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>All Products</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
                  {{-- Permission --}}
                  <li class="nav-item">
                      <a href="#" class="nav-link active">
